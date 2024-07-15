@@ -1,28 +1,34 @@
 import { NavLink } from "react-router-dom";
+import Dashboard from '../svg/Dashboard'
+import Suppliers from '../svg/Suppliers'
+import Inventory from '../svg/Inventory'
+import Orders from '../svg/Orders'
+import Clients from '../svg/Clients'
+
 const NavBar = () => {
   type NavLinks = {
-    label: string;
+    label: JSX.Element;
     href: string;
   };
   const nav_links: Array<NavLinks> = [
     {
-      label: "Dashboard",
+      label: <Dashboard></Dashboard>,
       href: "/dashboard",
     },
     {
-      label: "Inventory",
+      label: <Inventory></Inventory>,
       href: "/inventory",
     },
     {
-      label: "Suppliers",
+      label: <Suppliers></Suppliers>,
       href: "/suppliers",
     },
     {
-      label: "Clients",
+      label: <Clients></Clients>,
       href: "/clients",
     },
     {
-      label: "Orders",
+      label: <Orders></Orders>,
       href: "/orders",
     },
   ];
@@ -30,9 +36,9 @@ const NavBar = () => {
     <nav className="fixed top-0 left-0 h-screen w-1/4 flex flex-col rounded-r-lg drop-shadow-2xl">
       <section>
         {/*Hamburger Icon - Show When in Mobile mode*/}
-        {/*Logo - Show when in landscape desktop mode*/}
+        <img src="/logo.png" className="hidden lg:block" alt="logo"></img>
       </section>
-      <section className="">
+      <section className="pt-16">
         {nav_links.map((nav_link) => (
           <NavLink
             to={nav_link.href}
