@@ -1,6 +1,7 @@
 import {
   Box,
   Container,
+  IdCardLanyard,
   LayoutDashboard,
   PackageSearch,
   Settings,
@@ -22,28 +23,33 @@ import {
 const items = [
   {
     title: "Dashboard",
-    url: "#",
+    url: "/",
     icon: LayoutDashboard,
   },
   {
     title: "Inventory",
-    url: "#",
+    url: "/inventory",
     icon: Box,
   },
   {
     title: "Orders",
-    url: "#",
+    url: "/orders",
     icon: PackageSearch,
   },
   {
     title: "Suppliers",
-    url: "#",
+    url: "/suppliers",
     icon: Container,
   },
   {
     title: "Products",
-    url: "#",
+    url: "/products",
     icon: ShoppingBag,
+  },
+  {
+    title: "Employees",
+    url: "#",
+    icon: IdCardLanyard,
   },
   {
     title: "Settings",
