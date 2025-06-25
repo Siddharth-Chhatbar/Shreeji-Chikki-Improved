@@ -1,3 +1,4 @@
+"use client";
 import {
   Card,
   CardAction,
@@ -6,6 +7,10 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { RevenueExpenditureChart } from "@/components/revenue-expenditure-chart";
+import { ItemsPieChart } from "@/components/items-pie-chart";
+import { Calendar, PlusIcon } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const Dashboard = () => {
   return (
@@ -13,11 +18,23 @@ const Dashboard = () => {
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
         <Card>
           <CardHeader>
-            <CardTitle>Revenue</CardTitle>
-            <CardDescription>Revenue from 15 May</CardDescription>
+            <div className="flex flex-col gap-1.5">
+              <CardTitle>Revenue</CardTitle>
+              <CardDescription>Revenue from 15 May</CardDescription>
+            </div>
             {/*TODO: Add a calender option and a selector to get the revenue*/}
-            <CardAction>Calender</CardAction>
-            <CardAction>Selector</CardAction>
+            <div className="ml-2 flex flex-row gap-3">
+              <CardAction>
+                <Button variant="outline" size="icon">
+                  <Calendar />
+                </Button>
+              </CardAction>
+              <CardAction>
+                <Button variant="outline" size="icon">
+                  <PlusIcon />
+                </Button>
+              </CardAction>
+            </div>
           </CardHeader>
           <CardContent>
             {/*
@@ -32,7 +49,11 @@ const Dashboard = () => {
             <CardTitle>New Orders</CardTitle>
             <CardDescription>Todays new orders</CardDescription>
             {/*TODO: Add button*/}
-            <CardAction>Add</CardAction>
+            <CardAction>
+              <Button variant="outline" size="icon">
+                <PlusIcon />
+              </Button>
+            </CardAction>
           </CardHeader>
           <CardContent>
             {/*
@@ -43,11 +64,23 @@ const Dashboard = () => {
         </Card>
         <Card>
           <CardHeader>
-            <CardTitle>Inbound Shipments</CardTitle>
-            <CardDescription>Deliveries arriving today</CardDescription>
+            <div className="flex flex-col gap-1.5">
+              <CardTitle>Inbound Shipments</CardTitle>
+              <CardDescription>Deliveries arriving today</CardDescription>
+            </div>
             {/*TODO: Add a calender option and an add button */}
-            <CardAction>Add</CardAction>
-            <CardAction>Calender</CardAction>
+            <div className="ml-2 flex flex-row gap-3">
+              <CardAction>
+                <Button variant="outline" size="icon">
+                  <Calendar />
+                </Button>
+              </CardAction>
+              <CardAction>
+                <Button variant="outline" size="icon">
+                  <PlusIcon />
+                </Button>
+              </CardAction>
+            </div>
           </CardHeader>
           <CardContent>
             {/*
@@ -61,7 +94,11 @@ const Dashboard = () => {
             <CardTitle>Deliveries Pending</CardTitle>
             <CardDescription>To be delievered</CardDescription>
             {/*TODO: Add button*/}
-            <CardAction>Add</CardAction>
+            <CardAction>
+              <Button variant="outline" size="icon">
+                <PlusIcon />
+              </Button>
+            </CardAction>
           </CardHeader>
           <CardContent>
             {/*
@@ -72,9 +109,16 @@ const Dashboard = () => {
         </Card>
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-        <Card>Sales Trend Line Chart</Card>
-        <Card>Pie chart for product categories that were sold</Card>
-        <Card className="col-span-2"> Table for low stock items </Card>
+        <div>
+          <RevenueExpenditureChart />
+        </div>
+        <div>
+          <ItemsPieChart />
+        </div>
+        <div className="col-span-1 lg:col-span-2">
+          {" "}
+          Table for low stock items{" "}
+        </div>
       </div>
     </div>
   );
