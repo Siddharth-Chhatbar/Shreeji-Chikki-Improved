@@ -1,29 +1,28 @@
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import NavBar from "./components/NavBar";
-import Dashboard from "./pages/Dashboard";
-import Suppliers from "./pages/Suppliers";
-import Inventory from "./pages/Inventory";
-import Orders from "./pages/Orders";
-import InventoryItem from "./pages/InventoryItem";
-import SupplierItem from "./components/SupplierItem";
-import Clients from "./pages/Clients";
+import { Route, Routes } from "react-router";
+import MainLayout from "./Layout/MainLayout";
+import Dashboard from "./Pages/Dashboard";
+import Inventory from "./Pages/Inventory/Inventory";
+import Orders from "./Pages/Orders";
+import Suppliers from "./Pages/Suppliers";
+import Products from "./Pages/Products";
+import Employees from "./Pages/Employees";
+import Settings from "./Pages/Settings";
+import EmployeePage from "./Pages/EmployeePage";
+
 function App() {
   return (
-    <Router>
-      <div className="bg-neutral-300 h-screen w-screen">
-        <NavBar></NavBar>
-        <Routes>
-          <Route path="/" Component={Dashboard} />
-          <Route path="/dashboard" Component={Dashboard} />
-          <Route path="/suppliers" Component={Suppliers} />
-          <Route path="/inventory" Component={Inventory} />
-          <Route path="/orders" Component={Orders} />
-          <Route path="/clients" Component={Clients} />
-          <Route path="/inventory/:id" Component={InventoryItem} />
-          <Route path="/suppliers/:id" Component={SupplierItem} />
-        </Routes>
-      </div>
-    </Router>
+    <Routes>
+      <Route element={<MainLayout />}>
+        <Route index element={<Dashboard />} />
+        <Route path="/inventory" element={<Inventory />} />
+        <Route path="/orders" element={<Orders />} />
+        <Route path="/suppliers" element={<Suppliers />} />
+        <Route path="/products" element={<Products />} />
+        <Route path="/employees" element={<Employees />} />
+        <Route path="/employees/:id" element={<EmployeePage />} />
+        <Route path="/settings" element={<Settings />} />
+      </Route>
+    </Routes>
   );
 }
 
