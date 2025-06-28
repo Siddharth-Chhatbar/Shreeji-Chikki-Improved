@@ -5,6 +5,9 @@ import Inventory from "./Pages/Inventory/Inventory";
 import Orders from "./Pages/Orders";
 import Suppliers from "./Pages/Suppliers";
 import Products from "./Pages/Products";
+import Employees from "./Pages/Employees";
+import Settings from "./Pages/Settings";
+import EmployeePage from "./Pages/EmployeePage";
 
 function App() {
   return (
@@ -15,6 +18,9 @@ function App() {
         <Route path="/orders" element={<Orders />} />
         <Route path="/suppliers" element={<Suppliers />} />
         <Route path="/products" element={<Products />} />
+        <Route path="/employees" element={<Employees />} />
+        <Route path="/employees/:id" element={<EmployeePage />} />
+        <Route path="/settings" element={<Settings />} />
       </Route>
     </Routes>
   );
