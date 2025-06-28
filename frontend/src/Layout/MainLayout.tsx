@@ -14,9 +14,9 @@ const MainLayout = () => {
   return (
     <SidebarProvider>
       <AppSidebar variant="sidebar" />
-      <div className="w-full">
+      <div className="w-full h-full">
         <Navbar />
-        <main className="px-4 pb-4">
+        <main className="px-4">
           <Outlet />
         </main>
       </div>
