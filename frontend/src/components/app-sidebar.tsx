@@ -25,6 +25,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "./ui/tooltip";
+import { NavLink } from "react-router";
 
 // Menu items.
 const items = [
@@ -55,12 +56,12 @@ const items = [
   },
   {
     title: "Employees",
-    url: "#",
+    url: "/employees",
     icon: IdCardLanyard,
   },
   {
     title: "Settings",
-    url: "#",
+    url: "/settings",
     icon: Settings,
   },
 ];
@@ -78,19 +79,19 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                 <SidebarMenuItem key={item.title}>
                   {isSidebarOpen ? (
                     <SidebarMenuButton asChild>
-                      <a href={item.url}>
+                      <NavLink to={item.url}>
                         <item.icon />
                         <span>{item.title}</span>
-                      </a>
+                      </NavLink>
                     </SidebarMenuButton>
                   ) : (
                     <TooltipProvider delayDuration={100}>
                       <Tooltip>
                         <TooltipTrigger asChild>
                           <SidebarMenuButton asChild>
-                            <a href={item.url}>
+                            <NavLink to={item.url}>
                               <item.icon />
-                            </a>
+                            </NavLink>
                           </SidebarMenuButton>
                         </TooltipTrigger>
                         <TooltipContent>
