@@ -2,7 +2,16 @@ import * as React from "react";
 import * as RechartsPrimitive from "recharts";
 
 import { cn } from "@/lib/utils";
+import type { TooltipPayload } from "recharts/types/state/tooltipSlice";
+import type { LegendPayload, LegendProps } from "recharts";
 
+interface ChartLegendContentProps {
+  className?: string;
+  payload?: LegendPayload[];
+  verticalAlign?: LegendProps["verticalAlign"];
+  hideIcon?: boolean;
+  nameKey?: string;
+}
 // Format: { THEME_NAME: CSS_SELECTOR }
 const THEMES = { light: "", dark: ".dark" } as const;
 
@@ -119,6 +128,8 @@ function ChartTooltipContent({
 }: React.ComponentProps<typeof RechartsPrimitive.Tooltip> &
   React.ComponentProps<"div"> & {
     hideLabel?: boolean;
+    payload?: TooltipPayload;
+    label?: string | number;
     hideIndicator?: boolean;
     indicator?: "line" | "dot" | "dashed";
     nameKey?: string;
@@ -184,7 +195,7 @@ function ChartTooltipContent({
 
           return (
             <div
-              key={item.dataKey}
+              key={String(item.dataKey)}
               className={cn(
                 "[&>svg]:text-muted-foreground flex w-full flex-wrap items-stretch gap-2 [&>svg]:h-2.5 [&>svg]:w-2.5",
                 indicator === "dot" && "items-center",
@@ -254,11 +265,12 @@ function ChartLegendContent({
   payload,
   verticalAlign = "bottom",
   nameKey,
-}: React.ComponentProps<"div"> &
-  Pick<RechartsPrimitive.LegendProps, "payload" | "verticalAlign"> & {
-    hideIcon?: boolean;
-    nameKey?: string;
-  }) {
+}: ChartLegendContentProps) {
+  // React.ComponentProps<"div"> &
+  //   Pick<RechartsPrimitive.LegendProps, "payload" | "verticalAlign"> & {
+  //     hideIcon?: boolean;
+  //     nameKey?: string;
+  //   })
   const { config } = useChart();
 
   if (!payload?.length) {
