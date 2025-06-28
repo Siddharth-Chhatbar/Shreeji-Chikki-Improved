@@ -11,6 +11,7 @@ import { RevenueExpenditureChart } from "@/components/revenue-expenditure-chart"
 import { ItemsPieChart } from "@/components/items-pie-chart";
 import { Calendar, PlusIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { LowStockTable } from "@/components/low-stock-table";
 
 const Dashboard = () => {
   return (
@@ -18,9 +19,11 @@ const Dashboard = () => {
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
         <Card>
           <CardHeader>
-            <div className="flex flex-col gap-1.5">
-              <CardTitle>Revenue</CardTitle>
-              <CardDescription>Revenue from 15 May</CardDescription>
+            <div className="flex flex-col">
+              <CardTitle>Tasks</CardTitle>
+              <CardDescription className="mt-1.5">
+                Pending tasks
+              </CardDescription>
             </div>
             {/*TODO: Add a calender option and a selector to get the revenue*/}
             <div className="ml-2 flex flex-row gap-3">
@@ -46,14 +49,20 @@ const Dashboard = () => {
         </Card>
         <Card>
           <CardHeader>
-            <CardTitle>New Orders</CardTitle>
-            <CardDescription>Todays new orders</CardDescription>
+            <div className="flex flex-col">
+              <CardTitle>New Orders</CardTitle>
+              <CardDescription className="mt-1.5">
+                Todays new orders
+              </CardDescription>
+            </div>
             {/*TODO: Add button*/}
-            <CardAction>
-              <Button variant="outline" size="icon">
-                <PlusIcon />
-              </Button>
-            </CardAction>
+            <div className="ml-2 flex flex-row gap-3">
+              <CardAction>
+                <Button variant="outline" size="icon">
+                  <PlusIcon />
+                </Button>
+              </CardAction>
+            </div>
           </CardHeader>
           <CardContent>
             {/*
@@ -64,9 +73,11 @@ const Dashboard = () => {
         </Card>
         <Card>
           <CardHeader>
-            <div className="flex flex-col gap-1.5">
+            <div className="flex flex-col">
               <CardTitle>Inbound Shipments</CardTitle>
-              <CardDescription>Deliveries arriving today</CardDescription>
+              <CardDescription className="mt-1.5">
+                Arriving today
+              </CardDescription>
             </div>
             {/*TODO: Add a calender option and an add button */}
             <div className="ml-2 flex flex-row gap-3">
@@ -91,14 +102,20 @@ const Dashboard = () => {
         </Card>
         <Card>
           <CardHeader>
-            <CardTitle>Deliveries Pending</CardTitle>
-            <CardDescription>To be delievered</CardDescription>
+            <div className="flex flex-col">
+              <CardTitle>Deliveries Pending</CardTitle>
+              <CardDescription className="mt-1.5">
+                To be delievered
+              </CardDescription>
+            </div>
             {/*TODO: Add button*/}
-            <CardAction>
-              <Button variant="outline" size="icon">
-                <PlusIcon />
-              </Button>
-            </CardAction>
+            <div className="ml-2 flex flex-row gap-3">
+              <CardAction>
+                <Button variant="outline" size="icon">
+                  <PlusIcon />
+                </Button>
+              </CardAction>
+            </div>
           </CardHeader>
           <CardContent>
             {/*
@@ -109,15 +126,14 @@ const Dashboard = () => {
         </Card>
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-        <div>
-          <RevenueExpenditureChart />
-        </div>
-        <div>
+        <div className="h-full">
           <ItemsPieChart />
         </div>
+        <div className="h-full">
+          <LowStockTable />
+        </div>
         <div className="col-span-1 lg:col-span-2">
-          {" "}
-          Table for low stock items{" "}
+          <RevenueExpenditureChart />
         </div>
       </div>
     </div>

@@ -1,0 +1,20 @@
+inventory table {
+  id, (pk)
+  product_id, (fk)
+  quantity,
+  location?,
+}
+
+raw_material table {
+  id,
+  name,
+  photo,
+  price
+}
+
+product table {
+  id, (pk)
+  name,
+  photos, (if any)
+  price, (per unit, per box, per carton, per gram, per kg)
+}
