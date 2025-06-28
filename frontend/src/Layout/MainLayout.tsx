@@ -3,12 +3,12 @@ import Navbar from "../components/Navbar";
 import { SidebarProvider } from "../components/ui/sidebar";
 import { AppSidebar } from "../components/app-sidebar";
 
-function getCookieValue(name: string) {
-  return document.cookie
-    .split("; ")
-    .find((row) => row.startsWith(name + "="))
-    ?.split("=")[1];
-}
+// function getCookieValue(name: string) {
+//   return document.cookie
+//     .split("; ")
+//     .find((row) => row.startsWith(name + "="))
+//     ?.split("=")[1];
+// }
 
 const MainLayout = () => {
   return (
