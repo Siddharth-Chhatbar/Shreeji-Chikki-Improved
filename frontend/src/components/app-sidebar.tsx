@@ -68,6 +68,12 @@ const items = [
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const isSidebarOpen: boolean = useSidebar().open;
+  const { setOpenMobile } = useSidebar();
+
+  const handleNavLinkClick = () => {
+    setOpenMobile(false);
+  };
+
   return (
     <Sidebar collapsible="icon" {...props}>
       <SidebarContent>
@@ -79,7 +85,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                 <SidebarMenuItem key={item.title}>
                   {isSidebarOpen ? (
                     <SidebarMenuButton asChild>
-                      <NavLink to={item.url}>
+                      <NavLink to={item.url} onClick={handleNavLinkClick}>
                         <item.icon />
                         <span>{item.title}</span>
                       </NavLink>
