@@ -26,7 +26,6 @@ import {
   TooltipTrigger,
 } from "./ui/tooltip";
 import { NavLink } from "react-router";
-import { use, useEffect } from "react";
 
 // Menu items.
 const items = [
