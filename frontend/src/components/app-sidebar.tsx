@@ -26,6 +26,7 @@ import {
   TooltipTrigger,
 } from "./ui/tooltip";
 import { NavLink } from "react-router";
+import { use, useEffect } from "react";
 
 // Menu items.
 const items = [
@@ -68,6 +69,14 @@ const items = [
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const isSidebarOpen: boolean = useSidebar().open;
+  const { setOpenMobile } = useSidebar();
+
+  const handleNavLinkClick = () => {
+    setOpenMobile(false);
+  };
+  console.log("isMobile", useSidebar().isMobile);
+  console.log("isOpenMobile", useSidebar().openMobile);
+
   return (
     <Sidebar collapsible="icon" {...props}>
       <SidebarContent>
@@ -79,7 +88,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                 <SidebarMenuItem key={item.title}>
                   {isSidebarOpen ? (
                     <SidebarMenuButton asChild>
-                      <NavLink to={item.url}>
+                      <NavLink to={item.url} onClick={handleNavLinkClick}>
                         <item.icon />
                         <span>{item.title}</span>
                       </NavLink>
