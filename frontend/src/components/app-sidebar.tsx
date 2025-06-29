@@ -73,8 +73,6 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const handleNavLinkClick = () => {
     setOpenMobile(false);
   };
-  console.log("isMobile", useSidebar().isMobile);
-  console.log("isOpenMobile", useSidebar().openMobile);
 
   return (
     <Sidebar collapsible="icon" {...props}>
