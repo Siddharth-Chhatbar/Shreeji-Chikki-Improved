@@ -2,6 +2,7 @@ import { DataTable } from "@/components/ui/data-table";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { columns } from "./columns";
 import mockInventoryData from "@/mock_data/mock-inventory-data";
+import { InputSheet } from "@/components/input-sheet";
 
 // async function getData(): Promise<Payment[]> {
 //   // Fetch data from your API here.
@@ -18,10 +19,17 @@ import mockInventoryData from "@/mock_data/mock-inventory-data";
 const Inventory = () => {
   return (
     <Tabs defaultValue="products">
-      <TabsList>
-        <TabsTrigger value="products"> Products </TabsTrigger>
-        <TabsTrigger value="raw_materials"> Raw Materials </TabsTrigger>
-      </TabsList>
+      <div className="flex flex-row justify-between">
+        <div>
+          <TabsList>
+            <TabsTrigger value="products"> Products </TabsTrigger>
+            <TabsTrigger value="raw_materials"> Raw Materials </TabsTrigger>
+          </TabsList>
+        </div>
+        <div>
+          <InputSheet />
+        </div>
+      </div>
       <TabsContent value="products" className="pb-4">
         <DataTable columns={columns} data={mockInventoryData} />
       </TabsContent>

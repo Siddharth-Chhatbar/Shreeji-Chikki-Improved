@@ -18,3 +18,20 @@ product table {
   photos, (if any)
   price, (per unit, per box, per carton, per gram, per kg)
 }
+
+order_item table {
+  id, (pk)
+  product_id, (fk)
+  order_id, (fk)
+  quantity,
+  unit_price,
+  delivery_date
+}
+
+order table {
+  id, (pk)
+  customer_id, (fk)
+  product_id[], (fks)
+  delivery_date (show this delivery date if all orders are delivered at the same time,
+                  else show product wide delivery date)
+}

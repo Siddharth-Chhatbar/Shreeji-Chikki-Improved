@@ -6,6 +6,7 @@ import {
   PackageSearch,
   Settings,
   ShoppingBag,
+  SquareUser,
 } from "lucide-react";
 
 import {
@@ -55,6 +56,11 @@ const items = [
     icon: ShoppingBag,
   },
   {
+    title: "Customers",
+    url: "/customers",
+    icon: SquareUser,
+  },
+  {
     title: "Employees",
     url: "/employees",
     icon: IdCardLanyard,
@@ -67,8 +73,8 @@ const items = [
 ];
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
-  const isSidebarOpen: boolean = useSidebar().open;
-  const { setOpenMobile } = useSidebar();
+  const { open, isMobile, setOpenMobile } = useSidebar();
+  const isSidebarOpen = isMobile || open;
 
   const handleNavLinkClick = () => {
     setOpenMobile(false);

@@ -1,7 +1,5 @@
-"use client";
-
 import type { InventoryItem } from "@/types/types";
-import { type ColumnDef } from "@tanstack/react-table";
+import type { ColumnDef } from "@tanstack/react-table";
 import { MoreHorizontal, ArrowUpDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
