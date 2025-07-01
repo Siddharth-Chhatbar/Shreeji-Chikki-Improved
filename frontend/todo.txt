@@ -2,7 +2,7 @@
 [x] Add data table
 [x] Fix card styling for the alignment of data
 [x] Fix height styling for charts on dashboard page
-[] when accepting orders give an option to ship eveyting together or separately
+[] when accepting orders give an option to ship everything together or separately
 [] increase the pb for mobile devices 
 
 
