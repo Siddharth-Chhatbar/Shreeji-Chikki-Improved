@@ -16,6 +16,29 @@ import { InputSheet } from "@/components/input-sheet";
 //     // ...
 //   ]
 // }
+
+const newInventoryItemFormFields = [
+  {
+    label: "Supplier Name",
+    placeholder: "Enter Supplier Name..."
+  },
+  {
+    label: "Product",
+    placeholder: "Enter Product/Select Product" // Able to select product from a dropdown
+  },
+  {
+    label: "Amount",
+    placeholder: "Enter Amount..."
+  },
+  {
+    label: "Delivery Date",
+    placeholder: "Select Delivery Date..."
+  },
+  {
+    label: "Comments",
+    placeholder: ""
+  },
+]
 const Inventory = () => {
   return (
     <Tabs defaultValue="products">
@@ -27,7 +50,7 @@ const Inventory = () => {
           </TabsList>
         </div>
         <div>
-          <InputSheet />
+          <InputSheet formFields={newInventoryItemFormFields} />
         </div>
       </div>
       <TabsContent value="products" className="pb-4">

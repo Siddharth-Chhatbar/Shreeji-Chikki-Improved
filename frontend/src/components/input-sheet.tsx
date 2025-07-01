@@ -13,7 +13,7 @@ import {
 } from "@/components/ui/sheet";
 import { PlusIcon } from "lucide-react";
 
-export function InputSheet() {
+export function InputSheet(formFileds: {label: string, placeholder: string}) {
   return (
     <Sheet>
       <SheetTrigger asChild>
