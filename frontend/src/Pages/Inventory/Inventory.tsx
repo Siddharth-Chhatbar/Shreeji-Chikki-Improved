@@ -2,7 +2,7 @@ import { DataTable } from "@/components/ui/data-table";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { columns } from "./columns";
 import mockInventoryData from "@/mock_data/mock-inventory-data";
-import { InputSheet } from "@/components/input-sheet";
+import { InputSheet } from "@/components/input-sheets/inventory-product-input-sheet";
 
 // async function getData(): Promise<Payment[]> {
 //   // Fetch data from your API here.

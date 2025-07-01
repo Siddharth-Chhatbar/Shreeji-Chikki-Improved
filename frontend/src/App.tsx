@@ -9,6 +9,8 @@ import Employees from "./Pages/Employees";
 import Settings from "./Pages/Settings";
 import EmployeePage from "./Pages/EmployeePage";
 import Customers from "./Pages/Customers";
+import Shop from "./Pages/Shop/Shop";
+import Tasks from "./Pages/Tasks";
 
 function App() {
   return (
@@ -17,6 +19,7 @@ function App() {
         <Route index element={<Dashboard />} />
         <Route path="/inventory" element={<Inventory />} />
         <Route path="/orders" element={<Orders />} />
+        <Route path="/tasks" element={<Tasks />} />
         <Route path="/suppliers" element={<Suppliers />} />
         <Route path="/products" element={<Products />} />
         <Route path="/customers" element={<Customers />} />
@@ -24,6 +27,7 @@ function App() {
         <Route path="/employees/:id" element={<EmployeePage />} />
         <Route path="/settings" element={<Settings />} />
       </Route>
+      <Route path="/shop" element={<Shop />} />
     </Routes>
   );
 }

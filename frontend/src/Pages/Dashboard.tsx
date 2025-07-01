@@ -82,6 +82,7 @@ const Dashboard = () => {
             <div className="ml-2 flex flex-row gap-3">
               <CardAction>
                 <Button variant="outline" size="icon">
+                  {/*TODO: Add options to select from a range of dates*/}
                   <Calendar />
                 </Button>
               </CardAction>
