@@ -5,5 +5,10 @@
 [] when accepting orders give an option to ship eveyting together or separately
 
 
+-- Tasks
+[] When opening tasks from dashboard it should navigate
+   navigate to the tasks page with pending tasks as a filter
+
+
 -- when done with MVP
 [] reduce bundle size using dyanamic imports

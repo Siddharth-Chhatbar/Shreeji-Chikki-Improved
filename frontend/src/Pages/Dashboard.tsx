@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/card";
 import { RevenueExpenditureChart } from "@/components/revenue-expenditure-chart";
 import { ItemsPieChart } from "@/components/items-pie-chart";
-import { Calendar, PlusIcon } from "lucide-react";
+import { PlusIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { LowStockTable } from "@/components/low-stock-table";
 
@@ -18,25 +18,14 @@ const Dashboard = () => {
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
         <Card>
           <CardHeader>
-            <div className="flex flex-col">
-              <CardTitle>Tasks</CardTitle>
-              <CardDescription className="mt-1.5">
-                Pending tasks
-              </CardDescription>
-            </div>
+            <CardTitle>Tasks</CardTitle>
+            <CardDescription className="mt-1.5">Pending tasks</CardDescription>
             {/*TODO: Add a calender option and a selector to get the revenue*/}
-            <div className="ml-2 flex flex-row gap-3">
-              <CardAction>
-                <Button variant="outline" size="icon">
-                  <Calendar />
-                </Button>
-              </CardAction>
-              <CardAction>
-                <Button variant="outline" size="icon">
-                  <PlusIcon />
-                </Button>
-              </CardAction>
-            </div>
+            <CardAction>
+              <Button variant="outline" size="icon">
+                <PlusIcon />
+              </Button>
+            </CardAction>
           </CardHeader>
           <CardContent>
             {/*
@@ -48,20 +37,16 @@ const Dashboard = () => {
         </Card>
         <Card>
           <CardHeader>
-            <div className="flex flex-col">
-              <CardTitle>New Orders</CardTitle>
-              <CardDescription className="mt-1.5">
-                Todays new orders
-              </CardDescription>
-            </div>
+            <CardTitle>New Orders</CardTitle>
+            <CardDescription className="mt-1.5">
+              Todays new orders
+            </CardDescription>
             {/*TODO: Add button*/}
-            <div className="ml-2 flex flex-row gap-3">
-              <CardAction>
-                <Button variant="outline" size="icon">
-                  <PlusIcon />
-                </Button>
-              </CardAction>
-            </div>
+            <CardAction>
+              <Button variant="outline" size="icon">
+                <PlusIcon />
+              </Button>
+            </CardAction>
           </CardHeader>
           <CardContent>
             {/*
@@ -72,26 +57,13 @@ const Dashboard = () => {
         </Card>
         <Card>
           <CardHeader>
-            <div className="flex flex-col">
-              <CardTitle>Inbound Shipments</CardTitle>
-              <CardDescription className="mt-1.5">
-                Arriving today
-              </CardDescription>
-            </div>
-            {/*TODO: Add a calender option and an add button */}
-            <div className="ml-2 flex flex-row gap-3">
-              <CardAction>
-                <Button variant="outline" size="icon">
-                  {/*TODO: Add options to select from a range of dates*/}
-                  <Calendar />
-                </Button>
-              </CardAction>
-              <CardAction>
-                <Button variant="outline" size="icon">
-                  <PlusIcon />
-                </Button>
-              </CardAction>
-            </div>
+            <CardTitle>Inbound Shipments</CardTitle>
+            <CardDescription className="mt-1.5">Arriving today</CardDescription>
+            <CardAction>
+              <Button variant="outline" size="icon">
+                <PlusIcon />
+              </Button>
+            </CardAction>
           </CardHeader>
           <CardContent>
             {/*
@@ -102,20 +74,15 @@ const Dashboard = () => {
         </Card>
         <Card>
           <CardHeader>
-            <div className="flex flex-col">
-              <CardTitle>Deliveries Pending</CardTitle>
-              <CardDescription className="mt-1.5">
-                To be delievered
-              </CardDescription>
-            </div>
-            {/*TODO: Add button*/}
-            <div className="ml-2 flex flex-row gap-3">
-              <CardAction>
-                <Button variant="outline" size="icon">
-                  <PlusIcon />
-                </Button>
-              </CardAction>
-            </div>
+            <CardTitle>Deliveries Pending</CardTitle>
+            <CardDescription className="mt-1.5">
+              To be delievered
+            </CardDescription>
+            <CardAction>
+              <Button variant="outline" size="icon">
+                <PlusIcon />
+              </Button>
+            </CardAction>
           </CardHeader>
           <CardContent>
             {/*
