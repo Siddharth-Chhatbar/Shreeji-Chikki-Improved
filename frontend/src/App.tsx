@@ -10,7 +10,7 @@ import Settings from "./Pages/Settings";
 import EmployeePage from "./Pages/EmployeePage";
 import Customers from "./Pages/Customers";
 import Shop from "./Pages/Shop/Shop";
-import Tasks from "./Pages/Tasks";
+import Tasks from "./Pages/Tasks/Tasks";
 
 function App() {
   return (
