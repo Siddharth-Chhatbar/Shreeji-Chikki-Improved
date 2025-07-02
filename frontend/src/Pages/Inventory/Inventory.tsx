@@ -3,6 +3,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { columns } from "./columns";
 import mockInventoryData from "@/mock_data/mock-inventory-data";
 import { InputSheet } from "@/components/input-sheets/inventory-product-input-sheet";
+import type { InventoryFormField } from "@/types/types";
 
 // async function getData(): Promise<Payment[]> {
 //   // Fetch data from your API here.
@@ -17,28 +18,28 @@ import { InputSheet } from "@/components/input-sheets/inventory-product-input-sh
 //   ]
 // }
 
-const newInventoryItemFormFields = [
+const newInventoryItemFormFields: InventoryFormField[] = [
   {
     label: "Supplier Name",
-    placeholder: "Enter Supplier Name..."
+    placeholder: "Enter Supplier Name...",
   },
   {
     label: "Product",
-    placeholder: "Enter Product/Select Product" // Able to select product from a dropdown
+    placeholder: "Enter Product/Select Product", // Able to select product from a dropdown
   },
   {
     label: "Amount",
-    placeholder: "Enter Amount..."
+    placeholder: "Enter Amount...",
   },
   {
     label: "Delivery Date",
-    placeholder: "Select Delivery Date..."
+    placeholder: "Select Delivery Date...",
   },
   {
     label: "Comments",
-    placeholder: ""
+    placeholder: "",
   },
-]
+];
 const Inventory = () => {
   return (
     <Tabs defaultValue="products">

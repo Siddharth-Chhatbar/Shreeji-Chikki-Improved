@@ -11,7 +11,7 @@ const routes: Record<string, string> = {
   "/suppliers": "Suppliers",
   "/customers": "Customers",
   "/employees": "Employees",
-  "/tasks": "tasks",
+  "/tasks": "Tasks",
 };
 
 const Navbar = () => {

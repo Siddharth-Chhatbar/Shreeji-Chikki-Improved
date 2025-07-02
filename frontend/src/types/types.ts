@@ -6,3 +6,8 @@ export type InventoryItem = {
   location: string;
   status: "In Stock" | "Low Stock" | "Out of Stock" | "Discontinued";
 };
+
+export type InventoryFormField = {
+  label: string;
+  placeholder: string;
+};
