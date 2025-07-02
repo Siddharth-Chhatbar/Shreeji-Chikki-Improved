@@ -186,7 +186,7 @@ export const mockTasksData: TasksItem[] = [
     description:
       "Conduct UAT with key stakeholders for the newly developed Feature Y.",
     assigned_to: "Grace Hall",
-    assigne_by: "Eve Davis",
+    assigned_by: "Eve Davis",
     due_date: "2025-07-07",
     status: "Pending",
   },
