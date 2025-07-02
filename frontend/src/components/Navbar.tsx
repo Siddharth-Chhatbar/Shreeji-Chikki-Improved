@@ -9,11 +9,15 @@ const routes: Record<string, string> = {
   "/orders": "Orders",
   "/products": "Products",
   "/suppliers": "Suppliers",
+  "/customers": "Customers",
+  "/employees": "Employees",
+  "/tasks": "Tasks",
 };
 
 const Navbar = () => {
   const location = useLocation();
   const pageName = routes[location.pathname] || "Unknown";
+
   return (
     <nav className="flex items-center justify-between p-4 sticky top-0 z-10 backdrop-blur-lg">
       {/* Left  */}

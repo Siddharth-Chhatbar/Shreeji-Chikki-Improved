@@ -6,3 +6,18 @@ export type InventoryItem = {
   location: string;
   status: "In Stock" | "Low Stock" | "Out of Stock" | "Discontinued";
 };
+
+export type InventoryFormField = {
+  label: string;
+  placeholder: string;
+};
+
+export type TasksItem = {
+  id: number;
+  name: string;
+  description: string;
+  assigned_to: string;
+  assigned_by: string;
+  due_date: string;
+  status: "Pending" | "Completed";
+};

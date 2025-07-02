@@ -11,9 +11,14 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import type { InventoryFormField } from "@/types/types";
 import { PlusIcon } from "lucide-react";
 
-export function InputSheet() {
+interface formProps {
+  formFields: InventoryFormField[];
+}
+export function InputSheet({ formFields }: formProps) {
+  console.log("Form fields:", formFields);
   return (
     <Sheet>
       <SheetTrigger asChild>

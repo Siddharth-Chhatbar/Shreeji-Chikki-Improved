@@ -6,5 +6,11 @@
 [] increase the pb for mobile devices 
 
 
+-- Tasks
+[] When opening tasks from dashboard it should navigate
+   navigate to the tasks page with pending tasks as a filter
+[] Filtering to the data table
+[] For Tasks dont create a page for indivudial task just add a sheet
+
 -- when done with MVP
 [] reduce bundle size using dynamic imports

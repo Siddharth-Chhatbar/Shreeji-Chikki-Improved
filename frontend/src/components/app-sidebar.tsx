@@ -1,12 +1,14 @@
 import {
   Box,
   Container,
+  FileCheck2,
   IdCardLanyard,
   LayoutDashboard,
   PackageSearch,
   Settings,
   ShoppingBag,
   SquareUser,
+  Store,
 } from "lucide-react";
 
 import {
@@ -46,6 +48,11 @@ const items = [
     icon: PackageSearch,
   },
   {
+    title: "Tasks",
+    url: "/tasks",
+    icon: FileCheck2,
+  },
+  {
     title: "Suppliers",
     url: "/suppliers",
     icon: Container,
@@ -64,6 +71,11 @@ const items = [
     title: "Employees",
     url: "/employees",
     icon: IdCardLanyard,
+  },
+  {
+    title: "Shop",
+    url: "/shop",
+    icon: Store,
   },
   {
     title: "Settings",
@@ -91,7 +103,14 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                 <SidebarMenuItem key={item.title}>
                   {isSidebarOpen ? (
                     <SidebarMenuButton asChild>
-                      <NavLink to={item.url} onClick={handleNavLinkClick}>
+                      <NavLink
+                        to={item.url}
+                        onClick={handleNavLinkClick}
+                        {...(item.title === "Shop" && {
+                          target: "_blank",
+                          rel: "noopener noreferrer",
+                        })}
+                      >
                         <item.icon />
                         <span>{item.title}</span>
                       </NavLink>
@@ -101,7 +120,13 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                       <Tooltip>
                         <TooltipTrigger asChild>
                           <SidebarMenuButton asChild>
-                            <NavLink to={item.url}>
+                            <NavLink
+                              to={item.url}
+                              {...(item.title === "Shop" && {
+                                target: "_blank",
+                                rel: "noopener noreferrer",
+                              })}
+                            >
                               <item.icon />
                             </NavLink>
                           </SidebarMenuButton>
