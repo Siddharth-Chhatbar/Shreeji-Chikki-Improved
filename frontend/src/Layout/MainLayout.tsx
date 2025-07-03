@@ -13,7 +13,6 @@ const MainLayout = () => {
   const cookieStore = getCookieValue("sidebar_state");
   const defaultOpen = cookieStore === "true";
 
-
   return (
     <SidebarProvider defaultOpen={defaultOpen}>
       <AppSidebar variant="sidebar" />
