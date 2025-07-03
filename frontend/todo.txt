@@ -6,7 +6,7 @@
 [] increase the pb for mobile devices 
 [] Add a clear all fields button for the sheet
 [] Sidebar on mobile does not occupy the full height of the screen when in landscape mode 
-
+[] keep the state of the table when switching back from a different tab on the same page 
 -- Tasks
 [] When opening tasks from dashboard it should  navigate to the tasks page with pending tasks as a filter
 [] Filtering to the data table
