@@ -2,7 +2,7 @@ import { DataTable } from "@/components/ui/data-table";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { columns } from "./columns";
 import mockInventoryData from "@/mock_data/mock-inventory-data";
-import { InputSheet } from "@/components/input-sheets/inventory-product-input-sheet";
+import { InputSheet } from "@/components/input-sheet";
 import type { InventoryFormField } from "@/types/types";
 
 // async function getData(): Promise<Payment[]> {
@@ -51,13 +51,16 @@ const Inventory = () => {
           </TabsList>
         </div>
         <div>
-          <InputSheet formFields={newInventoryItemFormFields} />
+          <InputSheet
+            formFields={newInventoryItemFormFields}
+            sheet="Inventory"
+          />
         </div>
       </div>
       <TabsContent value="products" className="pb-4">
         <DataTable columns={columns} data={mockInventoryData} />
       </TabsContent>
-      <TabsContent value="raw_materials">
+      <TabsContent value="raw_materials" className="pb-4">
         <DataTable columns={columns} data={mockInventoryData} />
       </TabsContent>
     </Tabs>
