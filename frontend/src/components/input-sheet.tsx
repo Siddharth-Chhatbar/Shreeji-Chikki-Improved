@@ -16,14 +16,17 @@ import { PlusIcon } from "lucide-react";
 
 interface formProps {
   formFields: InventoryFormField[];
+  sheet: string;
 }
-export function InputSheet({ formFields }: formProps) {
+export function InputSheet({ formFields, sheet }: formProps) {
   console.log("Form fields:", formFields);
   return (
     <Sheet>
       <SheetTrigger asChild>
         <Button>
-          <p className="hidden md:block">Add Inventory</p>
+          <p className="hidden md:block">
+            Add <span className="capitalize inline">{sheet}</span>
+          </p>
           <PlusIcon className="md:hidden" />
         </Button>
       </SheetTrigger>

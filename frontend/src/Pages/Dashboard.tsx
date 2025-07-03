@@ -12,6 +12,31 @@ import { PlusIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { LowStockTable } from "@/components/low-stock-table";
 import { NavLink } from "react-router";
+import { InputSheet } from "@/components/input-sheet";
+import type { InventoryFormField } from "@/types/types";
+
+const newInventoryItemFormFields: InventoryFormField[] = [
+  {
+    label: "Supplier Name",
+    placeholder: "Enter Supplier Name...",
+  },
+  {
+    label: "Product",
+    placeholder: "Enter Product/Select Product", // Able to select product from a dropdown
+  },
+  {
+    label: "Amount",
+    placeholder: "Enter Amount...",
+  },
+  {
+    label: "Delivery Date",
+    placeholder: "Select Delivery Date...",
+  },
+  {
+    label: "Comments",
+    placeholder: "",
+  },
+];
 
 const Dashboard = () => {
   const actionCards = [
@@ -19,28 +44,28 @@ const Dashboard = () => {
       title: "Tasks",
       subTitle: "Pending tasks",
       quantity: 1234,
-      buttonName: "Add Task",
+      buttonName: "task",
       page: "/tasks",
     },
     {
       title: "New Orders",
       subTitle: "Todays new orders",
       quantity: 1234,
-      buttonName: "Add New Order",
+      buttonName: "order",
       page: "/orders",
     },
     {
       title: "Inbound Shipments",
       subTitle: "Arriving today",
       quantity: 1234,
-      buttonName: "Add new inbound order",
+      buttonName: "inbound",
       page: "/deliveries?type=inbound",
     },
     {
       title: "Deliveries Pending",
       subTitle: "Todays pending deliveries",
       quantity: 1234,
-      buttonName: "Add new delivery",
+      buttonName: "delivery",
       page: "/deliveries",
     },
   ];
@@ -51,7 +76,9 @@ const Dashboard = () => {
   ) => {
     event.preventDefault();
     event.stopPropagation();
-    console.log(action + " button is clicked");
+    return (
+      <InputSheet formFields={newInventoryItemFormFields} sheet={action} />
+    );
   };
 
   return (
