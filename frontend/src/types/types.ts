@@ -21,3 +21,13 @@ export type TasksItem = {
   due_date: string;
   status: "Pending" | "Completed";
 };
+
+// TODO: add number of order items
+export type OrderItem = {
+  id: number; // Assuming 'id' as primary key for the inventory record itself
+  customer_id: number;
+  shop_name: string;
+  address: string;
+  order_value: string;
+  status: "Scheduled" | "Out for Delivery" | "Delivered" | "Not Scheduled";
+};

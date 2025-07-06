@@ -3,30 +3,7 @@ import { columns } from "./columns";
 import { mockTasksData } from "@/mock_data/mock-tasks-data";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { InputSheet } from "@/components/input-sheet";
-// import type { InventoryFormField } from "@/types/types";
 
-// const newInventoryItemFormFields: InventoryFormField[] = [
-//   {
-//     label: "Supplier Name",
-//     placeholder: "Enter Supplier Name...",
-//   },
-//   {
-//     label: "Product",
-//     placeholder: "Enter Product/Select Product", // Able to select product from a dropdown
-//   },
-//   {
-//     label: "Amount",
-//     placeholder: "Enter Amount...",
-//   },
-//   {
-//     label: "Delivery Date",
-//     placeholder: "Select Delivery Date...",
-//   },
-//   {
-//     label: "Comments",
-//     placeholder: "",
-//   },
-// ];
 const Tasks = () => {
   return (
     <Tabs defaultValue="all">
