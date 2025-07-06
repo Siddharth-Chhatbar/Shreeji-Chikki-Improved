@@ -8,8 +8,6 @@ import {
 } from "@/components/ui/card";
 import { RevenueExpenditureChart } from "@/components/revenue-expenditure-chart";
 import { ItemsPieChart } from "@/components/items-pie-chart";
-import { PlusIcon } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { LowStockTable } from "@/components/low-stock-table";
 import { NavLink } from "react-router";
 import { InputSheet } from "@/components/input-sheet";
@@ -71,14 +69,11 @@ const Dashboard = () => {
   ];
 
   const handleAddButtonClick = (
-    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-    action: string,
+    event: React.MouseEvent<Element, MouseEvent>,
   ) => {
     event.preventDefault();
     event.stopPropagation();
-    return (
-      <InputSheet formFields={newInventoryItemFormFields} sheet={action} />
-    );
+    console.log("Add button clicked for sheet.");
   };
 
   return (
@@ -92,16 +87,16 @@ const Dashboard = () => {
                 <CardDescription className="mt-1.5">
                   {actionCard.subTitle}
                 </CardDescription>
-                <CardAction>
-                  <Button
-                    variant="outline"
-                    size="icon"
-                    onClick={(e) => {
-                      handleAddButtonClick(e, actionCard.buttonName);
-                    }}
-                  >
-                    <PlusIcon />
-                  </Button>
+                <CardAction
+                  onClick={(e) => {
+                    handleAddButtonClick(e);
+                  }}
+                >
+                  <InputSheet
+                    formFields={newInventoryItemFormFields}
+                    sheet={actionCard.buttonName}
+                    invokeLocationDashboard={true}
+                  />
                 </CardAction>
               </CardHeader>
               <CardContent>

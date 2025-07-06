@@ -11,23 +11,41 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { useMediaQuery } from "@/hooks/use-media-query";
+import { cn } from "@/lib/utils";
 import type { InventoryFormField } from "@/types/types";
 import { PlusIcon } from "lucide-react";
 
 interface formProps {
   formFields: InventoryFormField[];
   sheet: string;
+  invokeLocationDashboard?: boolean;
 }
-export function InputSheet({ formFields, sheet }: formProps) {
+export function InputSheet({
+  formFields,
+  sheet,
+  invokeLocationDashboard = false,
+}: formProps) {
   console.log("Form fields:", formFields);
+  const isScreenMD = useMediaQuery("(max-width: 768px)");
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <Button>
-          <p className="hidden md:block">
+        <Button
+          variant={invokeLocationDashboard ? "outline" : "default"}
+          size={invokeLocationDashboard || isScreenMD ? "icon" : "default"}
+        >
+          {/* <p className="hidden md:block"> */}
+          <p
+            className={cn(
+              invokeLocationDashboard ? "hidden" : "hidden md:block",
+            )}
+          >
             Add <span className="capitalize inline">{sheet}</span>
           </p>
-          <PlusIcon className="md:hidden" />
+          <PlusIcon
+            className={cn(invokeLocationDashboard ? "" : "md:hidden")}
+          />
         </Button>
       </SheetTrigger>
       <SheetContent>
