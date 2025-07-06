@@ -4,6 +4,7 @@ import { useMediaQuery } from "@/hooks/use-media-query";
 import { cn } from "@/lib/utils";
 import { PlusIcon } from "lucide-react";
 import InventoryForm from "./forms/inventory-form";
+import TaskForm from "./forms/task-form";
 import type { JSX } from "react";
 
 interface formProps {
@@ -17,7 +18,7 @@ export function InputSheet({
 }: formProps) {
   const form: Record<string, JSX.Element | null> = {
     inventory: <InventoryForm />,
-    task: null,
+    task: <TaskForm />,
   };
   const isScreenMD = useMediaQuery("(max-width: 768px)");
   return (
