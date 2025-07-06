@@ -11,30 +11,30 @@ import { ItemsPieChart } from "@/components/items-pie-chart";
 import { LowStockTable } from "@/components/low-stock-table";
 import { NavLink } from "react-router";
 import { InputSheet } from "@/components/input-sheet";
-import type { InventoryFormField } from "@/types/types";
+// import type { InventoryFormField } from "@/types/types";
 
-const newInventoryItemFormFields: InventoryFormField[] = [
-  {
-    label: "Supplier Name",
-    placeholder: "Enter Supplier Name...",
-  },
-  {
-    label: "Product",
-    placeholder: "Enter Product/Select Product", // Able to select product from a dropdown
-  },
-  {
-    label: "Amount",
-    placeholder: "Enter Amount...",
-  },
-  {
-    label: "Delivery Date",
-    placeholder: "Select Delivery Date...",
-  },
-  {
-    label: "Comments",
-    placeholder: "",
-  },
-];
+// const newInventoryItemFormFields: InventoryFormField[] = [
+//   {
+//     label: "Supplier Name",
+//     placeholder: "Enter Supplier Name...",
+//   },
+//   {
+//     label: "Product",
+//     placeholder: "Enter Product/Select Product", // Able to select product from a dropdown
+//   },
+//   {
+//     label: "Amount",
+//     placeholder: "Enter Amount...",
+//   },
+//   {
+//     label: "Delivery Date",
+//     placeholder: "Select Delivery Date...",
+//   },
+//   {
+//     label: "Comments",
+//     placeholder: "",
+//   },
+// ];
 
 const Dashboard = () => {
   const actionCards = [
@@ -93,7 +93,6 @@ const Dashboard = () => {
                   }}
                 >
                   <InputSheet
-                    formFields={newInventoryItemFormFields}
                     sheet={actionCard.buttonName}
                     invokeLocationDashboard={true}
                   />

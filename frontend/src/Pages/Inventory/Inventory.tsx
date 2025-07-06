@@ -3,7 +3,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { columns } from "./columns";
 import mockInventoryData from "@/mock_data/mock-inventory-data";
 import { InputSheet } from "@/components/input-sheet";
-import type { InventoryFormField } from "@/types/types";
+// import type { InventoryFormField } from "@/types/types";
 
 // async function getData(): Promise<Payment[]> {
 //   // Fetch data from your API here.
@@ -18,28 +18,28 @@ import type { InventoryFormField } from "@/types/types";
 //   ]
 // }
 
-const newInventoryItemFormFields: InventoryFormField[] = [
-  {
-    label: "Supplier Name",
-    placeholder: "Enter Supplier Name...",
-  },
-  {
-    label: "Product",
-    placeholder: "Enter Product/Select Product", // Able to select product from a dropdown
-  },
-  {
-    label: "Amount",
-    placeholder: "Enter Amount...",
-  },
-  {
-    label: "Delivery Date",
-    placeholder: "Select Delivery Date...",
-  },
-  {
-    label: "Comments",
-    placeholder: "",
-  },
-];
+// const newInventoryItemFormFields: InventoryFormField[] = [
+//   {
+//     label: "Supplier Name",
+//     placeholder: "Enter Supplier Name...",
+//   },
+//   {
+//     label: "Product",
+//     placeholder: "Enter Product/Select Product", // Able to select product from a dropdown
+//   },
+//   {
+//     label: "Amount",
+//     placeholder: "Enter Amount...",
+//   },
+//   {
+//     label: "Delivery Date",
+//     placeholder: "Select Delivery Date...",
+//   },
+//   {
+//     label: "Comments",
+//     placeholder: "",
+//   },
+// ];
 const Inventory = () => {
   return (
     <Tabs defaultValue="products">
@@ -51,10 +51,7 @@ const Inventory = () => {
           </TabsList>
         </div>
         <div>
-          <InputSheet
-            formFields={newInventoryItemFormFields}
-            sheet="Inventory"
-          />
+          <InputSheet sheet="inventory" />
         </div>
       </div>
       <TabsContent value="products" className="pb-4">
