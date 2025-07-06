@@ -2,7 +2,7 @@ import { Route, Routes } from "react-router";
 import MainLayout from "./Layout/MainLayout";
 import Dashboard from "./Pages/Dashboard";
 import Inventory from "./Pages/Inventory/Inventory";
-import Orders from "./Pages/Orders/OrdersOrders";
+import Orders from "./Pages/Orders/Orders";
 import Suppliers from "./Pages/Suppliers";
 import Products from "./Pages/Products";
 import Employees from "./Pages/Employees";
