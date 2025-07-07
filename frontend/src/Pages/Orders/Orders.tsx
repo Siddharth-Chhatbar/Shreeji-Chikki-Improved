@@ -34,16 +34,14 @@ const Orders = () => {
       <TabsContent value="delivered" className="pb-4">
         <DataTable
           columns={columns}
-          data={mockOrderItems.filter(
-            (item) => item.status === "Not Scheduled",
-          )}
+          data={mockOrderItems.filter((item) => item.status === "Delivered")}
         />
       </TabsContent>
       <TabsContent value="out for delivery" className="pb-4">
         <DataTable
           columns={columns}
           data={mockOrderItems.filter(
-            (item) => item.status === "Not Scheduled",
+            (item) => item.status === "Out for Delivery",
           )}
         />
       </TabsContent>
