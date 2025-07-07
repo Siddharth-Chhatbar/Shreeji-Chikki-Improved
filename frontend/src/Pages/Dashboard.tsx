@@ -68,14 +68,6 @@ const Dashboard = () => {
     },
   ];
 
-  const handleAddButtonClick = (
-    event: React.MouseEvent<Element, MouseEvent>,
-  ) => {
-    event.preventDefault();
-    event.stopPropagation();
-    console.log("Add button clicked for sheet.");
-  };
-
   return (
     <div className="flex flex-col gap-4">
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
@@ -89,7 +81,8 @@ const Dashboard = () => {
                 </CardDescription>
                 <CardAction
                   onClick={(e) => {
-                    handleAddButtonClick(e);
+                    e.preventDefault();
+                    e.stopPropagation();
                   }}
                 >
                   <InputSheet

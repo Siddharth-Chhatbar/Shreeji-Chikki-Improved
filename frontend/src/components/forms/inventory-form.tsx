@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { z } from "zod/v4";
+import * as z from "zod/v4";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
   Form,
@@ -31,7 +31,7 @@ const formSchema = z.object({
     .string()
     .min(2, { message: "Product name must be greater than 2 characters!" })
     .max(50),
-  quantity: z.int().min(0, { message: "Quantity cannot be negetive!" }),
+  quantity: z.int().min(0, { message: "Quantity cannot be negative!" }),
   location: z
     .string()
     .min(2, { message: "Location must be greater than 2 characters!" })

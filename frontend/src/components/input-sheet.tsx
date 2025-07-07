@@ -16,11 +16,11 @@ export function InputSheet({
   sheet,
   invokeLocationDashboard = false,
 }: formProps) {
-  const form: Record<string, JSX.Element | null> = {
+  const form: Record<string, JSX.Element> = {
     inventory: <InventoryForm />,
     task: <TaskForm />,
   };
-  const isScreenMD = useMediaQuery("(max-width: 768px)");
+  const isScreenMD = useMediaQuery("(max-width: 863px)");
   return (
     <Sheet>
       <SheetTrigger asChild>
@@ -41,7 +41,7 @@ export function InputSheet({
           />
         </Button>
       </SheetTrigger>
-      <SheetContent className="overflow-y-scroll">{form[sheet]}</SheetContent>
+      <SheetContent className="overflow-y-auto">{form[sheet]}</SheetContent>
     </Sheet>
   );
 }

@@ -23,10 +23,16 @@ const Tasks = () => {
         <DataTable columns={columns} data={mockTasksData} />
       </TabsContent>
       <TabsContent value="completed" className="pb-4">
-        <DataTable columns={columns} data={mockTasksData} />
+        <DataTable
+          columns={columns}
+          data={mockTasksData.filter((item) => item.status === "Completed")}
+        />
       </TabsContent>
       <TabsContent value="pending" className="pb-4">
-        <DataTable columns={columns} data={mockTasksData} />
+        <DataTable
+          columns={columns}
+          data={mockTasksData.filter((item) => item.status === "Pending")}
+        />
       </TabsContent>
     </Tabs>
   );

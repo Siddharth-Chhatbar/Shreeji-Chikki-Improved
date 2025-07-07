@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { z } from "zod/v4";
+import * as z from "zod/v4";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
   Form,
@@ -34,7 +34,7 @@ const formSchema = z.object({
     .max(50),
   description: z
     .string()
-    .min(5, { message: "Description name must be greater than 2 characters!" })
+    .min(5, { message: "Description must be greater than 5 characters!" })
     .max(100),
   assigned_to: z.enum(["A", "B", "C"]),
   assigned_by: z.enum(["A", "B", "C"]),
@@ -55,8 +55,8 @@ const TaskForm = () => {
   return (
     <div>
       <SheetHeader>
-        <SheetTitle>Inventory</SheetTitle>
-        <SheetDescription>Add or Edit an Inventory Item.</SheetDescription>
+        <SheetTitle>Task</SheetTitle>
+        <SheetDescription>Add or Edit an Task.</SheetDescription>
       </SheetHeader>
       <Form {...form}>
         <form className="space-y-8 p-4">
@@ -65,7 +65,7 @@ const TaskForm = () => {
             name="task_name"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Product Name</FormLabel>
+                <FormLabel>Task Name</FormLabel>
                 <FormControl>
                   <Input {...field} />
                 </FormControl>
@@ -78,7 +78,7 @@ const TaskForm = () => {
             name="description"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Quantity</FormLabel>
+                <FormLabel>Description</FormLabel>
                 <FormControl>
                   <Textarea {...field} />
                 </FormControl>
