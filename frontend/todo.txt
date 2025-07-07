@@ -2,8 +2,11 @@
 [x] Add data table
 [x] Fix card styling for the alignment of data
 [x] Fix height styling for charts on dashboard page
-[] when accepting orders give an option to ship eveyting together or separately
-
+[] when accepting orders give an option to ship everything together or separately
+[] increase the pb for mobile devices 
+[] Add a clear all fields button for the sheet
+[] Sidebar on mobile does not occupy the full height of the screen when in landscape mode 
+[] keep the state of the table when switching back from a different tab on the same page 
 
 -- Tasks
 [x] When opening tasks from dashboard it should navigate
@@ -12,4 +15,4 @@
 [x] For Tasks dont create a page for indivudial task just add a sheet
 
 -- when done with MVP
-[] reduce bundle size using dyanamic imports
+[] reduce bundle size using dynamic imports
