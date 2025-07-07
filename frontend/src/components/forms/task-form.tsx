@@ -25,45 +25,47 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { Textarea } from "../ui/textarea";
 
 const formSchema = z.object({
-  product_name: z
+  task_name: z
     .string()
-    .min(2, { message: "Product name must be greater than 2 characters!" })
+    .min(2, { message: "Task name must be greater than 2 characters!" })
     .max(50),
-  quantity: z.int().min(0, { message: "Quantity cannot be negative!" }),
-  location: z
+  description: z
     .string()
-    .min(2, { message: "Location must be greater than 2 characters!" })
-    .max(50),
-  status: z.enum(["In Stock", "Low Stock", "Out of Stock"]),
-  category: z.enum(["Product", "Raw Material"]),
+    .min(5, { message: "Description must be greater than 5 characters!" })
+    .max(100),
+  assigned_to: z.enum(["A", "B", "C"]),
+  assigned_by: z.enum(["A", "B", "C"]),
+  due_date: z.iso.datetime(),
+  status: z.enum(["Pending", "Completed"]),
 });
-const InventoryForm = () => {
+const TaskForm = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      product_name: "",
-      quantity: 0,
-      location: "",
-      status: "Out of Stock",
-      category: "Product",
+      task_name: "",
+      description: "",
+      assigned_to: "A",
+      assigned_by: "A",
+      status: "Pending",
     },
   });
   return (
     <div>
       <SheetHeader>
-        <SheetTitle>Inventory</SheetTitle>
-        <SheetDescription>Add or Edit an Inventory Item.</SheetDescription>
+        <SheetTitle>Task</SheetTitle>
+        <SheetDescription>Add or Edit an Task.</SheetDescription>
       </SheetHeader>
       <Form {...form}>
         <form className="space-y-8 p-4">
           <FormField
             control={form.control}
-            name="product_name"
+            name="task_name"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Product Name</FormLabel>
+                <FormLabel>Task Name</FormLabel>
                 <FormControl>
                   <Input {...field} />
                 </FormControl>
@@ -73,12 +75,12 @@ const InventoryForm = () => {
           />
           <FormField
             control={form.control}
-            name="quantity"
+            name="description"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Quantity</FormLabel>
+                <FormLabel>Description</FormLabel>
                 <FormControl>
-                  <Input {...field} />
+                  <Textarea {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -86,12 +88,49 @@ const InventoryForm = () => {
           />
           <FormField
             control={form.control}
-            name="location"
+            name="assigned_to"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Location</FormLabel>
+                <FormLabel>Assigned To</FormLabel>
                 <FormControl>
-                  <Input {...field} />
+                  <Select
+                    value={field.value}
+                    onValueChange={field.onChange}
+                    defaultValue={field.value}
+                  >
+                    <SelectTrigger className="w-full">
+                      <SelectValue placeholder="Choose assignee" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="A">A</SelectItem>
+                      <SelectItem value="B">B</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="assigned_by"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Assigned By</FormLabel>
+                <FormControl>
+                  <Select
+                    value={field.value}
+                    onValueChange={field.onChange}
+                    defaultValue={field.value}
+                  >
+                    <SelectTrigger className="w-full">
+                      <SelectValue placeholder="Assigned By" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="A">A</SelectItem>
+                      <SelectItem value="B">B</SelectItem>
+                    </SelectContent>
+                  </Select>
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -113,34 +152,8 @@ const InventoryForm = () => {
                       <SelectValue placeholder="Status" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="In Stock">In Stock</SelectItem>
-                      <SelectItem value="Out of Stock">Out of Stock</SelectItem>
-                      <SelectItem value="Low Stock">Low Stock</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="category"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Select Category</FormLabel>
-                <FormControl>
-                  <Select
-                    value={field.value}
-                    onValueChange={field.onChange}
-                    defaultValue={field.value}
-                  >
-                    <SelectTrigger className="w-full">
-                      <SelectValue placeholder="Category" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="Product">Product</SelectItem>
-                      <SelectItem value="Raw Material">Raw Material</SelectItem>
+                      <SelectItem value="Pending">Pending</SelectItem>
+                      <SelectItem value="Completed">Completed</SelectItem>
                     </SelectContent>
                   </Select>
                 </FormControl>
@@ -160,4 +173,4 @@ const InventoryForm = () => {
   );
 };
 
-export default InventoryForm;
+export default TaskForm;

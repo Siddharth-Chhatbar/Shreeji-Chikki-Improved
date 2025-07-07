@@ -8,35 +8,33 @@ import {
 } from "@/components/ui/card";
 import { RevenueExpenditureChart } from "@/components/revenue-expenditure-chart";
 import { ItemsPieChart } from "@/components/items-pie-chart";
-import { PlusIcon } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { LowStockTable } from "@/components/low-stock-table";
 import { NavLink } from "react-router";
 import { InputSheet } from "@/components/input-sheet";
-import type { InventoryFormField } from "@/types/types";
+// import type { InventoryFormField } from "@/types/types";
 
-const newInventoryItemFormFields: InventoryFormField[] = [
-  {
-    label: "Supplier Name",
-    placeholder: "Enter Supplier Name...",
-  },
-  {
-    label: "Product",
-    placeholder: "Enter Product/Select Product", // Able to select product from a dropdown
-  },
-  {
-    label: "Amount",
-    placeholder: "Enter Amount...",
-  },
-  {
-    label: "Delivery Date",
-    placeholder: "Select Delivery Date...",
-  },
-  {
-    label: "Comments",
-    placeholder: "",
-  },
-];
+// const newInventoryItemFormFields: InventoryFormField[] = [
+//   {
+//     label: "Supplier Name",
+//     placeholder: "Enter Supplier Name...",
+//   },
+//   {
+//     label: "Product",
+//     placeholder: "Enter Product/Select Product", // Able to select product from a dropdown
+//   },
+//   {
+//     label: "Amount",
+//     placeholder: "Enter Amount...",
+//   },
+//   {
+//     label: "Delivery Date",
+//     placeholder: "Select Delivery Date...",
+//   },
+//   {
+//     label: "Comments",
+//     placeholder: "",
+//   },
+// ];
 
 const Dashboard = () => {
   const actionCards = [
@@ -70,17 +68,6 @@ const Dashboard = () => {
     },
   ];
 
-  const handleAddButtonClick = (
-    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-    action: string,
-  ) => {
-    event.preventDefault();
-    event.stopPropagation();
-    return (
-      <InputSheet formFields={newInventoryItemFormFields} sheet={action} />
-    );
-  };
-
   return (
     <div className="flex flex-col gap-4">
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
@@ -92,16 +79,16 @@ const Dashboard = () => {
                 <CardDescription className="mt-1.5">
                   {actionCard.subTitle}
                 </CardDescription>
-                <CardAction>
-                  <Button
-                    variant="outline"
-                    size="icon"
-                    onClick={(e) => {
-                      handleAddButtonClick(e, actionCard.buttonName);
-                    }}
-                  >
-                    <PlusIcon />
-                  </Button>
+                <CardAction
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                  }}
+                >
+                  <InputSheet
+                    sheet={actionCard.buttonName}
+                    invokeLocationDashboard={true}
+                  />
                 </CardAction>
               </CardHeader>
               <CardContent>

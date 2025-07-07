@@ -7,10 +7,12 @@
 [] Add a clear all fields button for the sheet
 [] Sidebar on mobile does not occupy the full height of the screen when in landscape mode 
 [] keep the state of the table when switching back from a different tab on the same page 
+
 -- Tasks
-[] When opening tasks from dashboard it should  navigate to the tasks page with pending tasks as a filter
+[x] When opening tasks from dashboard it should navigate
+   navigate to the tasks page with pending tasks as a filter
 [] Filtering to the data table
-[] For Tasks don't create a page for indivudial task just add a sheet
+[x] For Tasks dont create a page for indivudial task just add a sheet
 
 -- when done with MVP
 [] reduce bundle size using dynamic imports
