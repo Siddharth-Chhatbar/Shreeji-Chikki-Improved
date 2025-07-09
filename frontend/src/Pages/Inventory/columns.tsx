@@ -20,14 +20,19 @@ export const columns: ColumnDef<InventoryItem>[] = [
     accessorKey: "quantity",
     header: ({ column }) => {
       return (
-        <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          Quantity
-          <ArrowUpDown className="ml-2 h-4 w-4" />
-        </Button>
+        <div className="text-center items-center">
+          <Button
+            variant="ghost"
+            onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+          >
+            Quantity
+            <ArrowUpDown className="ml-2 h-4 w-4" />
+          </Button>
+        </div>
       );
+    },
+    cell: ({ row }) => {
+      return <div className="text-center">{row.getValue("quantity")}</div>;
     },
   },
   {
