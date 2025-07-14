@@ -356,3 +356,7 @@ cython_debug/
 node_modules/
 .vscode/
 ```vscode/
+backend/*/migrations/
+frontend/.vercel/
+frontend/.vercel/*
+
