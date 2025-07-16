@@ -20,7 +20,7 @@ class SalesOrders(models.Model):
     )
     # products = models.ManyToManyField(Products, through="OrderItems", related_name="orders")
     created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField()
+    updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return f"Order {self.order_id} by {self.customer.name}"
@@ -62,7 +62,7 @@ class PurchaseOrders(models.Model):
     )
     # products = models.ManyToManyField(Products, through="OrderItems", related_name="orders")
     created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField()
+    updated_at = models.DateTimeField(auto_now=True)
 
 
 class PurchaseOrderItems(models.Model):

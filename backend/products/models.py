@@ -7,7 +7,7 @@ class Products(models.Model):
     price_per_unit_wholesale = models.DecimalField(max_digits=10, decimal_places=2)
     weight_in_grams = models.PositiveIntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField()
+    updated_at = models.DateTimeField(auto_now=True)
 
 
 class ProductPhotos(models.Model):
@@ -15,4 +15,4 @@ class ProductPhotos(models.Model):
     photo_url = models.URLField()
     display_order = models.PositiveSmallIntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField()
+    updated_at = models.DateTimeField(auto_now=True)

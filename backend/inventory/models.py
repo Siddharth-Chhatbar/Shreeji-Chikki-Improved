@@ -17,4 +17,4 @@ class Inventory(models.Model):
     quantity = models.PositiveIntegerField()
     location = models.CharField(max_length=200)
     created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField()
+    updated_at = models.DateTimeField(auto_now=True)
