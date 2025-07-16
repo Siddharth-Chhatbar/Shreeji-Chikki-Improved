@@ -23,3 +23,5 @@ class BillOfMaterials(models.Model):
     product = models.ForeignKey(Products, on_delete=models.DO_NOTHING)
     raw_material = models.ForeignKey(RawMaterials, on_delete=models.DO_NOTHING)
     quantity_required = models.PositiveIntegerField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)

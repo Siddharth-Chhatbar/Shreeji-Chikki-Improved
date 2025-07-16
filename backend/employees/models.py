@@ -22,8 +22,8 @@ class TimeEntries(models.Model):
     employee = models.ForeignKey(Employees, on_delete=models.DO_NOTHING)
     start_time = models.DateTimeField()
     end_time = models.DateTimeField()
-    break_start_time = models.DateTimeField()
-    break_end_time = models.DateTimeField()
+    break_start_time = models.DateTimeField(null=True, blank=True)
+    break_end_time = models.DateTimeField(null=True, blank=True)
     notes = models.CharField(max_length=300)
     type = models.CharField(
         max_length=20, choices=TypeChoices.choices, default=TypeChoices.REGULAR
