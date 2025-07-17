@@ -17,7 +17,7 @@ class SalesOrders(models.Model):
     customer = models.ForeignKey(
         to=Customers, on_delete=models.DO_NOTHING, related_name="customer"
     )
-    order_amount = models.DecimalField(max_digits=20, decimal_places=2)
+    # order_amount = models.DecimalField(max_digits=20, decimal_places=2)
     order_status = models.CharField(
         max_length=15, choices=StatusChoices.choices, default=StatusChoices.PENDING
     )
@@ -65,7 +65,7 @@ class PurchaseOrders(models.Model):
 
     order_id = models.UUIDField(primary_key=True, default=uuid.uuid4)
     supplier = models.ForeignKey(Suppliers, on_delete=models.DO_NOTHING)
-    order_amount = models.DecimalField(max_digits=20, decimal_places=2)
+    # order_amount = models.DecimalField(max_digits=20, decimal_places=2)
     order_status = models.CharField(
         max_length=15, choices=StatusChoices.choices, default=StatusChoices.PENDING
     )
@@ -87,7 +87,7 @@ class PurchaseOrderItems(models.Model):
     raw_material = models.ForeignKey(
         RawMaterials, on_delete=models.DO_NOTHING, related_name="raw_materials"
     )
-    # product = models.ForeignKey(Product, on_delete=models.DO_NOTHING)
+    product = models.ForeignKey(Products, on_delete=models.DO_NOTHING)
     quantity = models.PositiveIntegerField()
     order_status = models.CharField(
         max_length=15, choices=StatusChoices.choices, default=StatusChoices.PENDING
@@ -98,4 +98,4 @@ class PurchaseOrderItems(models.Model):
     @property
     def item_subtotal(self):
         pass
-        # return self.product.price * self.quantity
+        return self.product.price_per_unit_wholesale * self.quantity

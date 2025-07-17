@@ -30,3 +30,7 @@ class User(AbstractUser):
     # You can add a __str__ method or other methods if needed
     def __str__(self):
         return self.username
+
+    # TODO: This could be redundant, test and remove it later if thats the case
+    def get_full_name(self):
+        return super().get_full_name()
