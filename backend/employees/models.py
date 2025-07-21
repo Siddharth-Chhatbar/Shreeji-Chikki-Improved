@@ -1,5 +1,6 @@
 from django.db import models
 from users.models import User
+from datetime import timedelta
 
 
 class Employees(models.Model):
@@ -31,4 +32,18 @@ class TimeEntries(models.Model):
 
     @property
     def total_hours(self):
-        pass
+        if self.start_time and self.end_time:
+            work_duration = self.end_time - self.start_time
+        else:
+            return 0.0
+
+        break_duration = timedelta(0)
+        if self.break_start_time and self.break_end_time:
+            break_duration = self.break_end_time - self.break_start_time
+
+        actual_work_duration = work_duration - break_duration
+
+        return actual_work_duration.total_seconds() / 3600
+
+    def __str__(self):
+        return f"Time Entry for {self.employee.user.get_full_name()} from {self.start_time.strftime('%Y-%m-%d %H:%M')}"
