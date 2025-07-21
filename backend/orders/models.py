@@ -47,7 +47,7 @@ class OrderItems(models.Model):
         max_length=15, choices=StatusChoices.choices, default=StatusChoices.PENDING
     )
     expected_shipping_date = models.DateTimeField()
-    actual_shipping_date = models.DateTimeField()
+    actual_shipping_date = models.DateTimeField(blank=True, null=True)
 
     @property
     def item_subtotal(self):
@@ -60,7 +60,7 @@ class PurchaseOrders(models.Model):
     class StatusChoices(models.TextChoices):
         PENDING = "Pending"
         SCHEDULED = "Scheduled"
-        DELIEVERED = "Delievered"
+        DELIEVERED = "Delivered"
         CANCELLED = "Cancelled"
 
     order_id = models.UUIDField(primary_key=True, default=uuid.uuid4)
@@ -78,7 +78,7 @@ class PurchaseOrderItems(models.Model):
     class StatusChoices(models.TextChoices):
         PENDING = "Pending"
         SCHEDULED = "Scheduled"
-        DELIEVERED = "Delievered"
+        DELIEVERED = "Delivered"
         CANCELLED = "Cancelled"
 
     order = models.ForeignKey(
@@ -92,8 +92,8 @@ class PurchaseOrderItems(models.Model):
     order_status = models.CharField(
         max_length=15, choices=StatusChoices.choices, default=StatusChoices.PENDING
     )
-    expexted_shipping_date = models.DateTimeField()
-    actual_shipping_date = models.DateTimeField()
+    expected_shipping_date = models.DateTimeField()
+    actual_shipping_date = models.DateTimeField(blank=True, null=True)
 
     @property
     def item_subtotal(self):

@@ -9,5 +9,5 @@ class CustomerSerializer(serializers.ModelSerializer):
             "shop_name",
             "address",
             "email",
-            "phonenumber"
+            "phone_number"
         )

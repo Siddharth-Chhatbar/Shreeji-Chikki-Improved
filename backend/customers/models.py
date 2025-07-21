@@ -8,4 +8,4 @@ class Customers(models.Model):
     email = models.EmailField(null=True)
     phone_number = models.CharField(max_length=20)
     created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField()
+    updated_at = models.DateTimeField(auto_now=True)

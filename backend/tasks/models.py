@@ -11,10 +11,10 @@ class Tasks(models.Model):
 
     name = models.CharField(max_length=100)
     description = models.CharField(max_length=300)
-    assigend_by = models.ForeignKey(
+    assigned_by = models.ForeignKey(
         Employees, on_delete=models.DO_NOTHING, related_name="task_assigned_by"
     )
-    assigend_to = models.ForeignKey(
+    assigned_to = models.ForeignKey(
         Employees, on_delete=models.DO_NOTHING, related_name="task_assigned_to"
     )
     due_date_time = models.DateTimeField()
