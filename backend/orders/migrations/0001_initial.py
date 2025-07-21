@@ -36,7 +36,7 @@ class Migration(migrations.Migration):
                         choices=[
                             ("Pending", "Pending"),
                             ("Scheduled", "Scheduled"),
-                            ("Delievered", "Delievered"),
+                            ("Delivered", "Delivered"),
                             ("Cancelled", "Cancelled"),
                         ],
                         default="Pending",
@@ -73,7 +73,7 @@ class Migration(migrations.Migration):
                         choices=[
                             ("Pending", "Pending"),
                             ("Scheduled", "Scheduled"),
-                            ("Delievered", "Delievered"),
+                            ("Delivered", "Delivered"),
                             ("Cancelled", "Cancelled"),
                         ],
                         default="Pending",
@@ -116,7 +116,7 @@ class Migration(migrations.Migration):
                         choices=[
                             ("Pending", "Pending"),
                             ("Scheduled", "Scheduled"),
-                            ("Delievered", "Delievered"),
+                            ("Delivered", "Delivered"),
                             ("Cancelled", "Cancelled"),
                         ],
                         default="Pending",
@@ -154,7 +154,7 @@ class Migration(migrations.Migration):
                         choices=[
                             ("Pending", "Pending"),
                             ("Scheduled", "Scheduled"),
-                            ("Delievered", "Delievered"),
+                            ("Delivered", "Delivered"),
                             ("Cancelled", "Cancelled"),
                         ],
                         default="Pending",

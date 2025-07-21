@@ -10,7 +10,7 @@ class SalesOrders(models.Model):
     class StatusChoices(models.TextChoices):
         PENDING = "Pending"
         SCHEDULED = "Scheduled"
-        DELIEVERED = "Delievered"
+        DELIVERED = "Delivered"
         CANCELLED = "Cancelled"
 
     order_id = models.UUIDField(primary_key=True, default=uuid.uuid4)
@@ -33,7 +33,7 @@ class OrderItems(models.Model):
     class StatusChoices(models.TextChoices):
         PENDING = "Pending"
         SCHEDULED = "Scheduled"
-        DELIEVERED = "Delivered"
+        DELIVERED = "Delivered"
         CANCELLED = "Cancelled"
 
     order = models.ForeignKey(
@@ -60,7 +60,7 @@ class PurchaseOrders(models.Model):
     class StatusChoices(models.TextChoices):
         PENDING = "Pending"
         SCHEDULED = "Scheduled"
-        DELIEVERED = "Delivered"
+        DELIVERED = "Delivered"
         CANCELLED = "Cancelled"
 
     order_id = models.UUIDField(primary_key=True, default=uuid.uuid4)
@@ -78,7 +78,7 @@ class PurchaseOrderItems(models.Model):
     class StatusChoices(models.TextChoices):
         PENDING = "Pending"
         SCHEDULED = "Scheduled"
-        DELIEVERED = "Delivered"
+        DELIVERED = "Delivered"
         CANCELLED = "Cancelled"
 
     order = models.ForeignKey(

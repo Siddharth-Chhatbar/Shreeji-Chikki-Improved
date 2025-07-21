@@ -34,7 +34,7 @@ class Migration(migrations.Migration):
                 choices=[
                     ("Pending", "Pending"),
                     ("Scheduled", "Scheduled"),
-                    ("Delivered", "Delievered"),
+                    ("Delivered", "Delivered"),
                     ("Cancelled", "Cancelled"),
                 ],
                 default="Pending",
