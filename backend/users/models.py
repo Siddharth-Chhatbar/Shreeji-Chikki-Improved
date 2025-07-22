@@ -30,4 +30,3 @@ class User(AbstractUser):
     # You can add a __str__ method or other methods if needed
     def __str__(self):
         return self.username
-
