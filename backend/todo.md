@@ -1,1 +1,2 @@
 [] Generic Views
+[] Auth
