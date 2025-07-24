@@ -23,7 +23,7 @@ class RawMaterialInventorySerializer(InventorySerializer):
     )
 
     class Meta(InventorySerializer.Meta):
-        model = ProductInventory
+        model = RawMaterialInventory
         fields = InventorySerializer.Meta.fields + ["raw_material_name"]
 
 

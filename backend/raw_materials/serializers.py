@@ -14,7 +14,14 @@ class RawMaterialSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = RawMaterials
-        fields = ["id", "name", "supplier_name", "created_at", "updated_at"]
+        fields = [
+            "id",
+            "name",
+            "supplier_name",
+            "price_history",
+            "created_at",
+            "updated_at",
+        ]
 
 
 class BillOfMaterialSerializer(serializers.ModelSerializer):

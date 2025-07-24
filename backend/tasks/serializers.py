@@ -16,7 +16,7 @@ class TaskSerializer(serializers.ModelSerializer):
             "assigned_to_name",
             "assigned_by",
             "assigned_by_name",
-            "due_date",
+            "due_date_time",
             "status",
             "created_at",
             "updated_at",
