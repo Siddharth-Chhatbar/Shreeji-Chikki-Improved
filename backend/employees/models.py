@@ -25,7 +25,7 @@ class TimeEntries(models.Model):
     end_time = models.DateTimeField()
     break_start_time = models.DateTimeField(null=True, blank=True)
     break_end_time = models.DateTimeField(null=True, blank=True)
-    notes = models.CharField(max_length=300)
+    notes = models.CharField(max_length=300, null=True, blank=True)
     type = models.CharField(
         max_length=20, choices=TypeChoices.choices, default=TypeChoices.REGULAR
     )
