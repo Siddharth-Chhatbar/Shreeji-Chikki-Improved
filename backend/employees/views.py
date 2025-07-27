@@ -16,13 +16,16 @@ class TimeEntryViewSet(viewsets.ModelViewSet):
     permission_classes = []
 
     def get_queryset(self):
-        employee_id = self.kwargs.get("employee_pk")
+        try:
+            employee_id = self.kwargs.get("employee_pk")
+        except (ValueError, TypeError):
+            raise NotFound(detail="Invalid employee ID format.") from None
 
         if employee_id is not None:
             try:
                 employee = Employees.objects.get(id=employee_id)
                 return TimeEntries.objects.filter(employee=employee)
             except Employees.DoesNotExist:
-                raise NotFound(detail="Employee not found.")
+                raise NotFound(detail="Employee not found.") from None
 
         return TimeEntries.objects.none()
