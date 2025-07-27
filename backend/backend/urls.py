@@ -22,4 +22,5 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("silk/", include("silk.urls", namespace="silk")),
     path("api/", include("customers.urls")),
+    path("api/", include("employees.urls")),
 ]
