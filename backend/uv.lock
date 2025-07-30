@@ -21,6 +21,7 @@ dependencies = [
     { name = "django-extensions" },
     { name = "django-filter" },
     { name = "django-polymorphic" },
+    { name = "django-rest-polymorphic" },
     { name = "django-silk" },
     { name = "djangorestframework" },
     { name = "drf-nested-routers" },
@@ -42,6 +43,7 @@ requires-dist = [
     { name = "django-extensions", specifier = ">=4.1" },
     { name = "django-filter", specifier = ">=25.1" },
     { name = "django-polymorphic", specifier = ">=4.1.0" },
+    { name = "django-rest-polymorphic", specifier = ">=0.1.10" },
     { name = "django-silk", specifier = ">=5.4.0" },
     { name = "djangorestframework", specifier = ">=3.16.0" },
     { name = "drf-nested-routers", specifier = ">=0.94.2" },
@@ -155,6 +157,21 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/7a/4c/b8dc06147602b4c990e1094a1f230771fd65b2f9c1107f28afe1461ee249/django_polymorphic-4.1.0.tar.gz", hash = "sha256:4438d95a0aef6c4307cd6c83ead387e1142ce80b65188a931ec2f0dbdd9bfc51", size = 49696, upload-time = "2025-05-20T16:32:24.424Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/30/66/00e6fc8ca9cf10ca41aa5d3d7746214fa7690138174c6716e9a08259bff2/django_polymorphic-4.1.0-py3-none-any.whl", hash = "sha256:0ce3984999e103a0d1a434a5c5617f2c7f990dc3d5fb3585ce0fadadf9ff90ea", size = 62845, upload-time = "2025-05-20T16:32:20.322Z" },
+]
+
+[[package]]
+name = "django-rest-polymorphic"
+version = "0.1.10"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "django" },
+    { name = "django-polymorphic" },
+    { name = "djangorestframework" },
+    { name = "six" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/f4/86/285f7da71ecd82ce6f1765ffb74425faf8244d8554cb6d00542286157701/django-rest-polymorphic-0.1.10.tar.gz", hash = "sha256:2960f58ed9a8bb0d42bc72c8ffaadfbd7f37d2573d42a1cd9a6460f3d572b519", size = 6464, upload-time = "2022-07-17T04:33:14.89Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/d3/90/e20bde06ea67111718ad8d03e21cccdfe37e24ccdff30ea22100a3004070/django_rest_polymorphic-0.1.10-py2.py3-none-any.whl", hash = "sha256:f3980e3e2af73357e7913f9b1410ef856866bcfcc46903b70fe9621118bb538c", size = 6027, upload-time = "2022-07-17T04:33:12.736Z" },
 ]
 
 [[package]]
@@ -289,6 +306,15 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/f6/b0/4bc07ccd3572a2f9df7e6782f52b0c6c90dcbb803ac4a167702d7d0dfe1e/python_dotenv-1.1.1.tar.gz", hash = "sha256:a8a6399716257f45be6a007360200409fce5cda2661e3dec71d23dc15f6189ab", size = 41978, upload-time = "2025-06-24T04:21:07.341Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/5f/ed/539768cf28c661b5b068d66d96a2f155c4971a5d55684a514c1a0e0dec2f/python_dotenv-1.1.1-py3-none-any.whl", hash = "sha256:31f23644fe2602f88ff55e1f5c79ba497e01224ee7737937930c448e4d0e24dc", size = 20556, upload-time = "2025-06-24T04:21:06.073Z" },
+]
+
+[[package]]
+name = "six"
+version = "1.17.0"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/94/e7/b2c673351809dca68a0e064b6af791aa332cf192da575fd474ed7d6f16a2/six-1.17.0.tar.gz", hash = "sha256:ff70335d468e7eb6ec65b95b99d3a2836546063f63acc5171de367e834932a81", size = 34031, upload-time = "2024-12-04T17:35:28.174Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/b7/ce/149a00dd41f10bc29e5921b496af8b574d8413afcd5e30dfa0ed46c2cc5e/six-1.17.0-py2.py3-none-any.whl", hash = "sha256:4721f391ed90541fddacab5acf947aa0d3dc7d27b2e1e8eda2be8970586c3274", size = 11050, upload-time = "2024-12-04T17:35:26.475Z" },
 ]
 
 [[package]]

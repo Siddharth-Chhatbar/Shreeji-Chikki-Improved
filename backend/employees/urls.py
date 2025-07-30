@@ -3,14 +3,16 @@ from employees import views
 from rest_framework.routers import DefaultRouter
 from rest_framework_nested import routers
 
-router = DefaultRouter()
-router.register(r"employees", views.EmployeeViewSet)
+app_name = "employees"
 
-employees_router = routers.NestedSimpleRouter(router, r"employees", lookup="employee")
+router = DefaultRouter()
+router.register(r"", views.EmployeeViewSet)
+
+employees_router = routers.NestedSimpleRouter(router, r"", lookup="employee")
 employees_router.register(
     r"time-entries",
     views.TimeEntryViewSet,
-    basename="employee-time-entry",
+    basename="time-entries",
 )
 
 urlpatterns = [

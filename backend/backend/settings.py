@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     "users",
     "raw_materials",
     "silk",
+    "polymorphic",
 ]
 
 MIDDLEWARE = [

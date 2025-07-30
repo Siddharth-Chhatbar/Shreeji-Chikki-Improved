@@ -1,3 +1,9 @@
-from django.shortcuts import render
+from products.serializers import ProductSerializer, ProductPhotoSerializer
+from products.models import Products, ProductPhotos
+from rest_framework import viewsets
 
-# Create your views here.
+
+class ProductViewSet(viewsets.ModelViewSet):
+    queryset = Products.objects.all()
+    serializer_class = ProductSerializer
+    permission_classes = []
