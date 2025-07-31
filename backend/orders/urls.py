@@ -5,8 +5,8 @@ from rest_framework.routers import DefaultRouter
 app_name = "orders"
 
 router = DefaultRouter()
-router.register(r"sales/", views.SalesOrderViewSet, basename="sales-order")
-router.register(r"purchase/", views.PurchaseOrderViewSet, basename="purchase-order")
+router.register(r"sales", views.SalesOrderViewSet, basename="sales-order")
+router.register(r"purchase", views.PurchaseOrderViewSet, basename="purchase-order")
 
 urlpatterns = [
     path("", include(router.urls)),
