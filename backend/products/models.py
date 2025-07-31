@@ -12,7 +12,7 @@ class Products(models.Model):
 
 class ProductPhotos(models.Model):
     product = models.ForeignKey(Products, on_delete=models.DO_NOTHING)
-    photo_url = models.URLField()
+    photo_url = models.URLField(max_length=300)
     display_order = models.PositiveSmallIntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

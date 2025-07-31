@@ -1,5 +1,4 @@
 from django.db import models
-
 from employees.models import Employees
 
 
@@ -21,3 +20,5 @@ class Tasks(models.Model):
     status = models.CharField(
         max_length=15, choices=StatusChoices.choices, default=StatusChoices.PENDING
     )
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)

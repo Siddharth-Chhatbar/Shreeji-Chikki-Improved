@@ -7,6 +7,7 @@ class OrderItemSerializer(serializers.ModelSerializer):
     class Meta:
         model = OrderItems
         fields = (
+            "id",
             "product",
             "quantity",
             "order_status",
@@ -26,13 +27,21 @@ class SalesOrderSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = SalesOrders
-        fields = ("customer", "order_amount", "order_status", "created_at", "items")
+        fields = (
+            "id",
+            "customer",
+            "order_amount",
+            "order_status",
+            "created_at",
+            "items",
+        )
 
 
 class PurchaseOrderItemSerializer(serializers.ModelSerializer):
     class Meta:
         model = PurchaseOrderItems
         fields = (
+            "id",
             "product",
             "raw_materials",
             "quantity",
@@ -53,4 +62,11 @@ class PurchaseOrderSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = PurchaseOrders
-        fields = ("supplier", "order_amount", "order_status", "created_at", "items")
+        fields = (
+            "id",
+            "supplier",
+            "order_amount",
+            "order_status",
+            "created_at",
+            "items",
+        )
