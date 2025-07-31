@@ -1,10 +1,5 @@
-from inventory.serializers import (
-    InventorySerializer,
-    InventoryPolymorphicSerializer,
-    ProductInventorySerializer,
-    RawMaterialInventorySerializer,
-)
-from inventory.models import Inventory, ProductInventory, RawMaterialInventory
+from inventory.serializers import InventoryPolymorphicSerializer
+from inventory.models import Inventory
 from rest_framework.viewsets import ModelViewSet
 
 
