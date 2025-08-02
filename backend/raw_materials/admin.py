@@ -1,3 +1,6 @@
 from django.contrib import admin
+from raw_materials.models import RawMaterials, RawMaterialPriceHistory, BillOfMaterials
 
-# Register your models here.
+admin.site.register(RawMaterials)
+admin.site.register(RawMaterialPriceHistory)
+admin.site.register(BillOfMaterials)
