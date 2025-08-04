@@ -25,4 +25,10 @@ urlpatterns = [
     path("api/employees/", include("employees.urls", namespace="employees")),
     path("api/inventory/", include("inventory.urls", namespace="inventory")),
     path("api/products/", include("products.urls", namespace="products")),
+    path("api/orders/", include("orders.urls", namespace="orders")),
+    path(
+        "api/raw-materials/", include("raw_materials.urls", namespace="raw_materials")
+    ),
+    path("api/suppliers/", include("suppliers.urls", namespace="suppliers")),
+    path("api/tasks/", include("tasks.urls", namespace="tasks")),
 ]

@@ -1,10 +1,15 @@
-from inventory.serializers import InventoryPolymorphicSerializer
-from inventory.models import Inventory
-from rest_framework.viewsets import ModelViewSet
+from rest_framework import viewsets
+from .models import ProductInventory, RawMaterialInventory
+from .serializers import ProductInventorySerializer, RawMaterialInventorySerializer
 
 
-class InventoryViewSet(ModelViewSet):
-    queryset = Inventory.objects.all()
-    serializer_class = InventoryPolymorphicSerializer
-    lookup_field = "id"
+class ProductInventoryViewSet(viewsets.ModelViewSet):
+    queryset = ProductInventory.objects.all()
+    serializer_class = ProductInventorySerializer
+    permission_classes = []
+
+
+class RawMaterialInventoryViewSet(viewsets.ModelViewSet):
+    queryset = RawMaterialInventory.objects.all()
+    serializer_class = RawMaterialInventorySerializer
     permission_classes = []
