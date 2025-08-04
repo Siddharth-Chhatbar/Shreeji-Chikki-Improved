@@ -29,4 +29,6 @@ urlpatterns = [
     path(
         "api/raw-materials/", include("raw_materials.urls", namespace="raw_materials")
     ),
+    path("api/suppliers/", include("suppliers.urls", namespace="suppliers")),
+    path("api/tasks/", include("tasks.urls", namespace="tasks")),
 ]
