@@ -31,3 +31,13 @@ export type OrderItem = {
   order_value: string;
   status: "Scheduled" | "Out for Delivery" | "Delivered" | "Not Scheduled";
 };
+
+export type Supplier = {
+  id: number;
+  name: string;
+  address: string;
+  phone_number: string;
+  created_at: string; // ISO 8601 string for timestamp with time zone
+  updated_at: string; // ISO 8601 string for timestamp with time zone
+  has_active_order: boolean;
+};
