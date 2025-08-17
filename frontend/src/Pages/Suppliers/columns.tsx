@@ -11,7 +11,6 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { boolean } from "zod/v4";
 
 export const columns: ColumnDef<Supplier>[] = [
   {
