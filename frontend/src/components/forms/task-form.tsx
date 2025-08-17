@@ -56,7 +56,7 @@ const TaskForm = () => {
     <div>
       <SheetHeader>
         <SheetTitle>Task</SheetTitle>
-        <SheetDescription>Add or Edit an Task.</SheetDescription>
+        <SheetDescription>Add or Edit a Task.</SheetDescription>
       </SheetHeader>
       <Form {...form}>
         <form className="space-y-8 p-4">

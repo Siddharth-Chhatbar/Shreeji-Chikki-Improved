@@ -25,15 +25,16 @@ export const columns: ColumnDef<Supplier>[] = [
     accessorKey: "phone_number",
     header: "Phone Number",
   },
-  //{
-  //  accessorKey: "has_active_order",
-  //  header: "Active Orders",
-  //  cell: ({ getValue }) => {
-  //    const isActive: boolean = getValue() as boolean;
-  //    return isActive ? "Yes" : "No";
-  //
-  //  } 
-  //},
+  {
+    accessorKey: "has_active_order",
+    header: "Active Orders",
+    enableHiding: true,
+    cell: ({ getValue }) => {
+      const isActive: boolean = getValue() as boolean;
+      return isActive ? "Yes" : "No";
+
+    } 
+  },
   {
     // Maybe ask about this and just allow actions only on the product page
     id: "actions",

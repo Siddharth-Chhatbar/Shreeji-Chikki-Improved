@@ -3,8 +3,12 @@ import { columns } from "./columns";
 import { InputSheet } from "@/components/input-sheet";
 import { mockSuppliersData } from "@/mock_data/mock-suppliers-data";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { useMemo } from "react";
 
 const Suppliers = () => {
+  const activeSuppliers = useMemo(
+    () => mockSuppliersData.filter((s) => s.has_active_order), []
+  );
   return (
     <Tabs defaultValue="all">
       <div className="flex flex-row justify-between">
@@ -24,7 +28,7 @@ const Suppliers = () => {
       <TabsContent value="is-active" className="pb-4">
         <DataTable
           columns={columns}
-          data={mockSuppliersData.filter((supplier) => supplier.has_active_order === true)}
+          data={activeSuppliers}
         />
       </TabsContent>
     </Tabs>

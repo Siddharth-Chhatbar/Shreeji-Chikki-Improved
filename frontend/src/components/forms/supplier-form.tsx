@@ -23,17 +23,22 @@ import { Textarea } from "../ui/textarea";
 const formSchema = z.object({
   name: z
     .string()
-    .min(2, { message: "Supplier Name nust be freater than 2 characters!" })
-    .max(100),
+    .trim()
+    .min(2, { message: "Supplier name must be greater than 2 characters" })
+    .max(100, { message: "Supplier name must be at most 100 characters" }),
   address: z
     .string()
-    .min(5, { message: "Address must be greater than 5 characters!" })
-    .max(300),
+    .trim()
+    .min(5, { message: "Address must be greater than 5 characters" })
+    .max(300, { message: "Address must be at most 300 characters" }),
   phone_number: z
     .string()
-    .min(10, { message: "Phone number must be 10 digits!" })
-    .max(13),
+    .trim()
+    .regex(/^\+?\d{10,13}$/, {
+      message: "Phone number must be 10–13 digits (optional leading +)",
+    }),
 });
+
 const SupplierForm = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -46,8 +51,8 @@ const SupplierForm = () => {
   return (
     <div>
       <SheetHeader>
-        <SheetTitle>Task</SheetTitle>
-        <SheetDescription>Add or Edit an Task.</SheetDescription>
+        <SheetTitle>Supplier</SheetTitle>
+        <SheetDescription>Add or Edit a Supplier.</SheetDescription>
       </SheetHeader>
       <Form {...form}>
         <form className="space-y-8 p-4">
@@ -84,7 +89,7 @@ const SupplierForm = () => {
               <FormItem>
                 <FormLabel>Phone Number</FormLabel>
                 <FormControl>
-                  <Input {...field} />
+                  <Input {...field} type="tel" />
                 </FormControl>
                 <FormMessage />
               </FormItem>
