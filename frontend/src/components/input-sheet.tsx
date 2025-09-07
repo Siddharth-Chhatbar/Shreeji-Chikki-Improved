@@ -6,6 +6,7 @@ import { PlusIcon } from "lucide-react";
 import InventoryForm from "./forms/inventory-form";
 import TaskForm from "./forms/task-form";
 import SupplierForm from "./forms/supplier-form";
+import ProductForm from "./forms/product-form";
 import type { JSX } from "react";
 
 interface formProps {
@@ -13,16 +14,21 @@ interface formProps {
   sheet: string;
   invokeLocationDashboard?: boolean;
 }
+
 export function InputSheet({
   sheet,
   invokeLocationDashboard = false,
 }: formProps) {
+
   const form: Record<string, JSX.Element> = {
     inventory: <InventoryForm />,
     task: <TaskForm />,
-    supplier: <SupplierForm /> 
+    supplier: <SupplierForm />,
+    product: <ProductForm />
   };
+
   const isScreenMD = useMediaQuery("(max-width: 863px)");
+
   return (
     <Sheet>
       <SheetTrigger asChild>

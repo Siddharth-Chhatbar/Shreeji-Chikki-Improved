@@ -1,4 +1,3 @@
-
 import type { Supplier } from "@/types/types";
 import type { ColumnDef } from "@tanstack/react-table";
 import { MoreHorizontal } from "lucide-react";
