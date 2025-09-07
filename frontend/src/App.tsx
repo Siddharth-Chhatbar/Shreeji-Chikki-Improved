@@ -4,7 +4,7 @@ import Dashboard from "./Pages/Dashboard";
 import Inventory from "./Pages/Inventory/Inventory";
 import Orders from "./Pages/Orders/Orders";
 import Suppliers from "./Pages/Suppliers/Suppliers";
-import Products from "./Pages/Products";
+import Products from "./Pages/Products/Products";
 import Employees from "./Pages/Employees";
 import Settings from "./Pages/Settings";
 import EmployeePage from "./Pages/EmployeePage";

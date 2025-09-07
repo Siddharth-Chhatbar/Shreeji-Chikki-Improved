@@ -6,6 +6,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useMemo } from "react";
 
 const Suppliers = () => {
+  // Add dependency to use memo when data is fetched from the backend
   const activeSuppliers = useMemo(
     () => mockSuppliersData.filter((s) => s.has_active_order), []
   );
@@ -15,7 +16,7 @@ const Suppliers = () => {
         <div>
           <TabsList>
             <TabsTrigger value="all"> All </TabsTrigger>
-            <TabsTrigger value="is-active"> Active Orders </TabsTrigger>
+            <TabsTrigger value="active"> Active Orders </TabsTrigger>
           </TabsList>
         </div>
         <div>
@@ -25,7 +26,7 @@ const Suppliers = () => {
       <TabsContent value="all" className="pb-4">
         <DataTable columns={columns} data={mockSuppliersData} />
       </TabsContent>
-      <TabsContent value="is-active" className="pb-4">
+      <TabsContent value="active" className="pb-4">
         <DataTable
           columns={columns}
           data={activeSuppliers}

@@ -27,19 +27,18 @@ export const columns: ColumnDef<Supplier>[] = [
   },
   {
     accessorKey: "has_active_order",
-    header: "Active Orders",
+    header: "Active Order",
     enableHiding: true,
     cell: ({ getValue }) => {
       const isActive: boolean = getValue() as boolean;
       return isActive ? "Yes" : "No";
-
-    } 
+    }
   },
   {
-    // Maybe ask about this and just allow actions only on the product page
+    // Maybe ask about this and just allow actions only on the supplier page
     id: "actions",
     cell: ({ row }) => {
-      const product = row.original;
+      const supplier = row.original;
 
       return (
         <DropdownMenu>
@@ -52,13 +51,13 @@ export const columns: ColumnDef<Supplier>[] = [
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
             <DropdownMenuItem
-              onClick={() => navigator.clipboard.writeText(product.name)}
+              onClick={() => navigator.clipboard.writeText(supplier.name)}
             >
               Copy payment ID
             </DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>Edit Task</DropdownMenuItem>
-            <DropdownMenuItem>Change Status to Completed</DropdownMenuItem>
+            <DropdownMenuItem>Edit Supplier</DropdownMenuItem>
+            <DropdownMenuItem>View supplier orders</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       );

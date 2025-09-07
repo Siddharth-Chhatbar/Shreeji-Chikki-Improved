@@ -41,3 +41,14 @@ export type Supplier = {
   updated_at: string; // ISO 8601 string for timestamp with time zone
   has_active_order: boolean;
 };
+
+
+export type Product = {
+  id: number;
+  name: string;
+  price_per_unit_mrp: number;
+  price_per_unit_wholesale: number;
+  weight_in_grams: number;
+  created_at: string; // ISO 8601 string for timestamp with time zone
+  updated_at: string; // ISO 8601 string for timestamp with time zone
+};
