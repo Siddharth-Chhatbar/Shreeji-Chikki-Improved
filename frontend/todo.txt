@@ -9,7 +9,12 @@
 [] keep the state of the table when switching back from a different tab on the same page 
 [] hide columns from data tables when necessary
 
+[] Refactor Inventory model
+
+[] Add has active order for customers as well
+
 -- Products 
+[] for inventory add a search feat where user can select product from list can can also search in the list
 [] how to add photos in the input sheet
 
 -- when done with MVP

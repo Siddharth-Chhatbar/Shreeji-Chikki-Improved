@@ -45,10 +45,7 @@ const TaskForm = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      task_name: "",
       description: "",
-      assigned_to: "A",
-      assigned_by: "A",
       status: "Pending",
     },
   });
@@ -67,7 +64,7 @@ const TaskForm = () => {
               <FormItem>
                 <FormLabel>Task Name</FormLabel>
                 <FormControl>
-                  <Input {...field} />
+                  <Input {...field} placeholder="Enter a task name..." />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -80,7 +77,7 @@ const TaskForm = () => {
               <FormItem>
                 <FormLabel>Description</FormLabel>
                 <FormControl>
-                  <Textarea {...field} />
+                  <Textarea {...field} placeholder="Enter a task description..." />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -99,7 +96,7 @@ const TaskForm = () => {
                     defaultValue={field.value}
                   >
                     <SelectTrigger className="w-full">
-                      <SelectValue placeholder="Choose assignee" />
+                      <SelectValue placeholder="Choose assignee..." />
                     </SelectTrigger>
                     <SelectContent>
                       <SelectItem value="A">A</SelectItem>
@@ -124,7 +121,7 @@ const TaskForm = () => {
                     defaultValue={field.value}
                   >
                     <SelectTrigger className="w-full">
-                      <SelectValue placeholder="Assigned By" />
+                      <SelectValue placeholder="Assigned by..." />
                     </SelectTrigger>
                     <SelectContent>
                       <SelectItem value="A">A</SelectItem>
@@ -149,7 +146,7 @@ const TaskForm = () => {
                     defaultValue={field.value}
                   >
                     <SelectTrigger className="w-full">
-                      <SelectValue placeholder="Status" />
+                      <SelectValue placeholder="Select a status..." />
                     </SelectTrigger>
                     <SelectContent>
                       <SelectItem value="Pending">Pending</SelectItem>

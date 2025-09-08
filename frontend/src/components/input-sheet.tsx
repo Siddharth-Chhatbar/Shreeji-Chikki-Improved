@@ -7,6 +7,7 @@ import InventoryForm from "./forms/inventory-form";
 import TaskForm from "./forms/task-form";
 import SupplierForm from "./forms/supplier-form";
 import ProductForm from "./forms/product-form";
+import CustomerForm from "./forms/customer-form";
 import type { JSX } from "react";
 
 interface formProps {
@@ -24,7 +25,8 @@ export function InputSheet({
     inventory: <InventoryForm />,
     task: <TaskForm />,
     supplier: <SupplierForm />,
-    product: <ProductForm />
+    product: <ProductForm />,
+    customer: <CustomerForm />
   };
 
   const isScreenMD = useMediaQuery("(max-width: 863px)");

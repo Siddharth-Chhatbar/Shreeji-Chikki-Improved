@@ -5,10 +5,10 @@ import Inventory from "./Pages/Inventory/Inventory";
 import Orders from "./Pages/Orders/Orders";
 import Suppliers from "./Pages/Suppliers/Suppliers";
 import Products from "./Pages/Products/Products";
-import Employees from "./Pages/Employees";
+import Employees from "./Pages/Employees/Employees";
 import Settings from "./Pages/Settings";
-import EmployeePage from "./Pages/EmployeePage";
-import Customers from "./Pages/Customers";
+import EmployeePage from "./Pages/Employees/EmployeePage";
+import Customers from "./Pages/Customers/Customers";
 import Shop from "./Pages/Shop/Shop";
 import Tasks from "./Pages/Tasks/Tasks";
 

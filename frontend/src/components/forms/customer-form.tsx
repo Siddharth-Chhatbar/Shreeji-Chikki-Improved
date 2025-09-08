@@ -18,33 +18,50 @@ import {
   SheetTitle,
 } from "@/components/ui/sheet";
 import { Button } from "../ui/button";
+import { Textarea } from "../ui/textarea";
 
 const formSchema = z.object({
   name: z
     .string()
     .trim()
-    .min(2, { message: "Product name must be greater than 2 characters" })
-    .max(100, { message: "Product name must be at most 100 characters" }),
-  price_per_unit_mrp: z
-    .number()
-    .min(0, { message: "Price cannot be negetive" }),
-  price_per_unit_wholesale: z
-    .number()
-    .min(0, { message: "Price cannot be negetive" }),
-  weight_in_grams: z
-    .number()
-    .min(0, { message: "Weight cannot be negetive" }),
+    .min(2, { message: "Name must be greater than 2 characters" })
+    .max(100, { message: "Name must be at most 100 characters" }),
+  shop_name: z
+    .string()
+    .trim()
+    .min(2, { message: "Shop name must be greater than 2 characters" })
+    .max(100, { message: "Shop name must be at most 100 characters" }),
+  address: z
+    .string()
+    .trim()
+    .min(5, { message: "Address must be greater than 5 characters" })
+    .max(300, { message: "Address must be at most 300 characters" }),
+  email: z
+    .email({error: "Enter a valid Email"}),
+  phone_number: z
+    .string()
+    .trim()
+    .regex(/^\+?\d{10,13}$/, {
+      message: "Phone number must be 10–13 digits (optional leading +)",
+    }),
 });
 
-const ProductForm = () => {
+const CustomerForm = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
+    defaultValues: {
+      name: "",
+      shop_name: "",
+      address: "",
+      email: "",
+      phone_number: "",
+    },
   });
   return (
     <div>
       <SheetHeader>
-        <SheetTitle>Products</SheetTitle>
-        <SheetDescription>Add or Edit a Product.</SheetDescription>
+        <SheetTitle>Customer</SheetTitle>
+        <SheetDescription>Add or Edit a Customer.</SheetDescription>
       </SheetHeader>
       <Form {...form}>
         <form className="space-y-8 p-4">
@@ -55,7 +72,7 @@ const ProductForm = () => {
               <FormItem>
                 <FormLabel>Name</FormLabel>
                 <FormControl>
-                  <Input {...field} placeholder="Enter a product name..." />
+                  <Input {...field} placeholder="Enter customer name..." />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -63,12 +80,12 @@ const ProductForm = () => {
           />
           <FormField
             control={form.control}
-            name="price_per_unit_mrp"
+            name="shop_name"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Price Per Unit MRP</FormLabel>
+                <FormLabel>Name</FormLabel>
                 <FormControl>
-                  <Input {...field} placeholder="Enter the price per unit (MRP) ..." />
+                  <Input {...field} placeholder="Enter shop name..." />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -76,12 +93,12 @@ const ProductForm = () => {
           />
           <FormField
             control={form.control}
-            name="price_per_unit_wholesale"
+            name="address"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Price Per Unit Wholesale</FormLabel>
+                <FormLabel>Address</FormLabel>
                 <FormControl>
-                  <Input {...field} placeholder="Enter the price per unit (Wholesale) ..." />
+                  <Textarea {...field} placeholder="Enter shop address..." />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -89,12 +106,25 @@ const ProductForm = () => {
           />
           <FormField
             control={form.control}
-            name="weight_in_grams"
+            name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Weight (grams)</FormLabel>
+                <FormLabel>Name</FormLabel>
                 <FormControl>
-                  <Input {...field} placeholder="Enter the weight (grams)..." />
+                  <Input {...field} placeholder="Enter email..." />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="phone_number"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Phone Number</FormLabel>
+                <FormControl>
+                  <Input {...field} type="tel" placeholder="Enter customer phone number..." />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -112,5 +142,4 @@ const ProductForm = () => {
   );
 };
 
-export default ProductForm;
-
+export default CustomerForm;

@@ -39,17 +39,12 @@ const formSchema = z.object({
   status: z.enum(["In Stock", "Low Stock", "Out of Stock"]),
   category: z.enum(["Product", "Raw Material"]),
 });
+
 const InventoryForm = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
-    defaultValues: {
-      product_name: "",
-      quantity: 0,
-      location: "",
-      status: "Out of Stock",
-      category: "Product",
-    },
   });
+
   return (
     <div>
       <SheetHeader>
@@ -65,7 +60,7 @@ const InventoryForm = () => {
               <FormItem>
                 <FormLabel>Product Name</FormLabel>
                 <FormControl>
-                  <Input {...field} />
+                  <Input {...field} placeholder="Enter a product name..." />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -78,7 +73,10 @@ const InventoryForm = () => {
               <FormItem>
                 <FormLabel>Quantity</FormLabel>
                 <FormControl>
-                  <Input {...field} />
+                  <Input {...field}
+                    placeholder="Entry the quantity..."
+                    onChange={(e) => field.onChange(e.currentTarget.value)}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -91,7 +89,7 @@ const InventoryForm = () => {
               <FormItem>
                 <FormLabel>Location</FormLabel>
                 <FormControl>
-                  <Input {...field} />
+                  <Input {...field} placeholder="Enter the location..." />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -110,7 +108,7 @@ const InventoryForm = () => {
                     defaultValue={field.value}
                   >
                     <SelectTrigger className="w-full">
-                      <SelectValue placeholder="Status" />
+                      <SelectValue placeholder="Select a status..." />
                     </SelectTrigger>
                     <SelectContent>
                       <SelectItem value="In Stock">In Stock</SelectItem>
@@ -136,7 +134,7 @@ const InventoryForm = () => {
                     defaultValue={field.value}
                   >
                     <SelectTrigger className="w-full">
-                      <SelectValue placeholder="Category" />
+                      <SelectValue placeholder="Select a category..." />
                     </SelectTrigger>
                     <SelectContent>
                       <SelectItem value="Product">Product</SelectItem>
