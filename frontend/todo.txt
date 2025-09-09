@@ -19,3 +19,9 @@
 
 -- when done with MVP
 [] reduce bundle size using dynamic imports
+
+-- Orders
+ [] how to display order items, orders and how to input new orders
+
+ -- Employees 
+ [] infer on holiday from timeentries for employees
