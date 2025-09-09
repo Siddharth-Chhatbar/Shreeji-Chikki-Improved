@@ -39,7 +39,7 @@ const formSchema = z.object({
   status: z.enum(["In Stock", "Low Stock", "Out of Stock"]),
   category: z.enum(["Product", "Raw Material"]),
 });
-const InventoryForm = () => {
+const OrderForm = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -160,4 +160,4 @@ const InventoryForm = () => {
   );
 };
 
-export default InventoryForm;
+export default OrderForm;

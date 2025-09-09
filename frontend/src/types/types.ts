@@ -63,3 +63,16 @@ export type Customer = {
   created_at: string;
   updated_at: string;
 };
+
+export type Employee = {
+  id: number;
+  name: string;
+  hire_date: string;
+  job_title: string;
+  salary_per_hr: number;
+  created_at: string;
+  updated_at: string;
+  user_id: number;
+};
+
+

@@ -1,4 +1,5 @@
 import { useForm } from "react-hook-form";
+import { format } from "date-fns"
 import * as z from "zod/v4";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
@@ -18,7 +19,10 @@ import {
   SheetTitle,
 } from "@/components/ui/sheet";
 import { Button } from "../ui/button";
-import { Textarea } from "../ui/textarea";
+import { Popover, PopoverContent, PopoverTrigger } from "@radix-ui/react-popover";
+import { cn } from "@/lib/utils";
+import { CalendarIcon } from "lucide-react";
+import { Calendar } from "../ui/calendar";
 
 const formSchema = z.object({
   name: z
@@ -26,35 +30,26 @@ const formSchema = z.object({
     .trim()
     .min(2, { message: "Name must be greater than 2 characters" })
     .max(100, { message: "Name must be at most 100 characters" }),
-  shop_name: z
+  hire_date: z.date({
+    error: issue => issue.input === undefined ? "Required" : "Invalid date"
+  }),
+  job_title: z
     .string()
     .trim()
     .min(2, { message: "Shop name must be greater than 2 characters" })
     .max(100, { message: "Shop name must be at most 100 characters" }),
-  address: z
-    .string()
-    .trim()
-    .min(5, { message: "Address must be greater than 5 characters" })
-    .max(300, { message: "Address must be at most 300 characters" }),
-  email: z
-    .email({ error: "Enter a valid Email" }),
-  phone_number: z
-    .string()
-    .trim()
-    .regex(/^\+?\d{10,13}$/, {
-      message: "Phone number must be 10–13 digits (optional leading +)",
-    }),
+  salary_per_hr: z
+    .number()
+    .min(0, { message: "Salary cannot be negative!" }),
 });
 
-const CustomerForm = () => {
+const EmployeeForm = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: "",
-      shop_name: "",
-      address: "",
-      email: "",
-      phone_number: "",
+      hire_date: new Date(),
+      job_title: "",
     },
   });
   return (
@@ -80,51 +75,66 @@ const CustomerForm = () => {
           />
           <FormField
             control={form.control}
-            name="shop_name"
+            name="hire_date"
             render={({ field }) => (
-              <FormItem>
-                <FormLabel>Name</FormLabel>
-                <FormControl>
-                  <Input {...field} placeholder="Enter shop name..." />
-                </FormControl>
+              <FormItem className="flex flex-col">
+                <FormLabel>Date of birth</FormLabel>
+                <Popover>
+                  <PopoverTrigger asChild>
+                    <FormControl>
+                      <Button
+                        variant={"outline"}
+                        className={cn(
+                          "w-full pl-3 text-left font-normal",
+                          !field.value && "text-muted-foreground"
+                        )}
+                      >
+                        {field.value ? (
+                          format(field.value, "PPP")
+                        ) : (
+                          <span>Pick a date</span>
+                        )}
+                        <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
+                      </Button>
+                    </FormControl>
+                  </PopoverTrigger>
+                  <PopoverContent className="w-auto p-0" align="center">
+                    <Calendar
+                      mode="single"
+                      selected={field.value}
+                      onSelect={field.onChange}
+                      disabled={(date: Date) =>
+                        date > new Date() || date < new Date("1900-01-01")
+                      }
+                      captionLayout="dropdown"
+                    />
+                  </PopoverContent>
+                </Popover>
                 <FormMessage />
-              </FormItem>
-            )}
+              </FormItem>)}
           />
           <FormField
             control={form.control}
-            name="address"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Address</FormLabel>
-                <FormControl>
-                  <Textarea {...field} placeholder="Enter shop address..." />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="email"
+            name="job_title"
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Email</FormLabel>
                 <FormControl>
-                  <Input {...field} placeholder="Enter email..." />
+                  <Input {...field} placeholder="Enter job title..." />
                 </FormControl>
                 <FormMessage />
               </FormItem>
             )}
           />
+
           <FormField
             control={form.control}
-            name="phone_number"
+            name="salary_per_hr"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Phone Number</FormLabel>
+                <FormLabel>Address</FormLabel>
                 <FormControl>
-                  <Input {...field} type="tel" placeholder="Enter customer phone number..." />
+                  <Input {...field} placeholder="Enter salary per hr..." />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -142,4 +152,4 @@ const CustomerForm = () => {
   );
 };
 
-export default CustomerForm;
+export default EmployeeForm;
