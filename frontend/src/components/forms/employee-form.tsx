@@ -30,9 +30,7 @@ const formSchema = z.object({
     .trim()
     .min(2, { message: "Name must be greater than 2 characters" })
     .max(100, { message: "Name must be at most 100 characters" }),
-  hire_date: z.date({
-    error: issue => issue.input === undefined ? "Required" : "Invalid date"
-  }),
+  hire_date: z.iso.date(),
   job_title: z
     .string()
     .trim()

@@ -31,7 +31,9 @@ const formSchema = z.object({
     .string()
     .min(2, { message: "Product name must be greater than 2 characters!" })
     .max(50),
-  quantity: z.int().min(0, { message: "Quantity cannot be negative!" }),
+  quantity: z
+    .int()
+    .min(0, { message: "Quantity cannot be negative!" }),
   location: z
     .string()
     .min(2, { message: "Location must be greater than 2 characters!" })
@@ -60,7 +62,7 @@ const InventoryForm = () => {
               <FormItem>
                 <FormLabel>Product Name</FormLabel>
                 <FormControl>
-                  <Input {...field} placeholder="Enter a product name..." />
+                  <Input {...field} placeholder="Enter a product name..." autoComplete="off" />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -75,7 +77,12 @@ const InventoryForm = () => {
                 <FormControl>
                   <Input {...field}
                     placeholder="Entry the quantity..."
+                    type="number"
+                    inputMode="numeric"
+                    min={0}
                     onChange={(e) => field.onChange(e.currentTarget.value)}
+                    autoComplete="off"
+                    className="[appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
                   />
                 </FormControl>
                 <FormMessage />

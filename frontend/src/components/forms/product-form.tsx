@@ -68,7 +68,14 @@ const ProductForm = () => {
               <FormItem>
                 <FormLabel>Price Per Unit MRP</FormLabel>
                 <FormControl>
-                  <Input {...field} placeholder="Enter the price per unit (MRP) ..." />
+                  <Input {...field} placeholder="Enter the price per unit in MRP..."
+                    type="number"
+                    inputMode="numeric"
+                    min={0}
+                    onChange={(e) => field.onChange(e.currentTarget.value)}
+                    autoComplete="off"
+                    className="[appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -81,7 +88,14 @@ const ProductForm = () => {
               <FormItem>
                 <FormLabel>Price Per Unit Wholesale</FormLabel>
                 <FormControl>
-                  <Input {...field} placeholder="Enter the price per unit (Wholesale) ..." />
+                  <Input {...field} placeholder="Enter the price per unit for Wholesale..."
+                    type="number"
+                    inputMode="numeric"
+                    min={0}
+                    onChange={(e) => field.onChange(e.currentTarget.value)}
+                    autoComplete="off"
+                    className="[appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -94,7 +108,14 @@ const ProductForm = () => {
               <FormItem>
                 <FormLabel>Weight (grams)</FormLabel>
                 <FormControl>
-                  <Input {...field} placeholder="Enter the weight (grams)..." />
+                  <Input {...field} placeholder="Enter the weight in grams..."
+                    type="number"
+                    inputMode="numeric"
+                    min={0}
+                    onChange={(e) => field.onChange(e.currentTarget.value)}
+                    autoComplete="off"
+                    className="[appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
