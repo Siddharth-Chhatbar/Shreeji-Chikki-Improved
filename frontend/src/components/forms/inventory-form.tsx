@@ -45,6 +45,9 @@ const formSchema = z.object({
 const InventoryForm = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
+    defaultValues: {
+      status: "Out of Stock",
+    }
   });
 
   return (
@@ -112,7 +115,6 @@ const InventoryForm = () => {
                   <Select
                     value={field.value}
                     onValueChange={field.onChange}
-                    defaultValue={field.value}
                   >
                     <SelectTrigger className="w-full">
                       <SelectValue placeholder="Select a status..." />

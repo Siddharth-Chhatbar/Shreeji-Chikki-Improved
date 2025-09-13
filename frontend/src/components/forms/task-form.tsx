@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import * as z from "zod/v4";
-import { format } from "date-fns"
+import { format } from "date-fns";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
   Form,
@@ -43,7 +43,7 @@ const formSchema = z.object({
     .max(100),
   assigned_to: z.enum(["A", "B", "C"]),
   assigned_by: z.enum(["A", "B", "C"]),
-  due_date: z.iso.datetime(),
+  due_date: z.date(),
   status: z.enum(["Pending", "Completed"]),
 });
 const TaskForm = () => {
@@ -52,6 +52,7 @@ const TaskForm = () => {
     defaultValues: {
       description: "",
       status: "Pending",
+      due_date: new Date()
     },
   });
   return (
@@ -155,7 +156,7 @@ const TaskForm = () => {
                         )}
                       >
                         {field.value ? (
-                          format(field.value, "PPP")
+                          format(field.value as Date, "PPP")
                         ) : (
                           <span>Pick a date</span>
                         )}
@@ -168,7 +169,7 @@ const TaskForm = () => {
                       mode="single"
                       selected={new Date(field.value)}
                       onSelect={field.onChange}
-                      disabled={(date: Date) =>{
+                      disabled={(date: Date) => {
                         const today = new Date();
                         today.setHours(0, 0, 0, 0);
                         const yesterday = new Date(today);
@@ -183,7 +184,6 @@ const TaskForm = () => {
                 <FormMessage />
               </FormItem>)}
           />
-
           <FormField
             control={form.control}
             name="status"
