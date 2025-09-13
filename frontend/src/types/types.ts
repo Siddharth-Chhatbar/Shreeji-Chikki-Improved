@@ -31,3 +31,48 @@ export type OrderItem = {
   order_value: string;
   status: "Scheduled" | "Out for Delivery" | "Delivered" | "Not Scheduled";
 };
+
+export type Supplier = {
+  id: number;
+  name: string;
+  address: string;
+  phone_number: string;
+  created_at: string;
+  updated_at: string;
+  has_active_order: boolean;
+};
+
+
+export type Product = {
+  id: number;
+  name: string;
+  price_per_unit_mrp: number;
+  price_per_unit_wholesale: number;
+  weight_in_grams: number;
+  created_at: string;
+  updated_at: string;
+};
+
+export type Customer = {
+  id: number;
+  name: string;
+  shop_name: string;
+  address: string;
+  email: string | null;
+  phone_number: string;
+  created_at: string;
+  updated_at: string;
+};
+
+export type Employee = {
+  id: number;
+  name: string;
+  hire_date: string;
+  job_title: string;
+  salary_per_hr: number;
+  created_at: string;
+  updated_at: string;
+  user_id: number;
+};
+
+

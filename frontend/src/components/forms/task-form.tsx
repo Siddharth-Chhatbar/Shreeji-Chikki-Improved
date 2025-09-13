@@ -1,5 +1,6 @@
 import { useForm } from "react-hook-form";
 import * as z from "zod/v4";
+import { format } from "date-fns";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
   Form,
@@ -26,6 +27,10 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Textarea } from "../ui/textarea";
+import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
+import { cn } from "@/lib/utils";
+import { CalendarIcon } from "lucide-react";
+import { Calendar } from "../ui/calendar";
 
 const formSchema = z.object({
   task_name: z
@@ -38,25 +43,23 @@ const formSchema = z.object({
     .max(100),
   assigned_to: z.enum(["A", "B", "C"]),
   assigned_by: z.enum(["A", "B", "C"]),
-  due_date: z.iso.datetime(),
+  due_date: z.date(),
   status: z.enum(["Pending", "Completed"]),
 });
 const TaskForm = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      task_name: "",
       description: "",
-      assigned_to: "A",
-      assigned_by: "A",
       status: "Pending",
+      due_date: new Date()
     },
   });
   return (
     <div>
       <SheetHeader>
         <SheetTitle>Task</SheetTitle>
-        <SheetDescription>Add or Edit an Task.</SheetDescription>
+        <SheetDescription>Add or Edit a Task.</SheetDescription>
       </SheetHeader>
       <Form {...form}>
         <form className="space-y-8 p-4">
@@ -67,7 +70,7 @@ const TaskForm = () => {
               <FormItem>
                 <FormLabel>Task Name</FormLabel>
                 <FormControl>
-                  <Input {...field} />
+                  <Input {...field} placeholder="Enter a task name..." />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -80,7 +83,7 @@ const TaskForm = () => {
               <FormItem>
                 <FormLabel>Description</FormLabel>
                 <FormControl>
-                  <Textarea {...field} />
+                  <Textarea {...field} placeholder="Enter a task description..." />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -99,7 +102,7 @@ const TaskForm = () => {
                     defaultValue={field.value}
                   >
                     <SelectTrigger className="w-full">
-                      <SelectValue placeholder="Choose assignee" />
+                      <SelectValue placeholder="Choose assignee..." />
                     </SelectTrigger>
                     <SelectContent>
                       <SelectItem value="A">A</SelectItem>
@@ -124,7 +127,7 @@ const TaskForm = () => {
                     defaultValue={field.value}
                   >
                     <SelectTrigger className="w-full">
-                      <SelectValue placeholder="Assigned By" />
+                      <SelectValue placeholder="Assigned by..." />
                     </SelectTrigger>
                     <SelectContent>
                       <SelectItem value="A">A</SelectItem>
@@ -135,6 +138,51 @@ const TaskForm = () => {
                 <FormMessage />
               </FormItem>
             )}
+          />
+          <FormField
+            control={form.control}
+            name="due_date"
+            render={({ field }) => (
+              <FormItem className="flex flex-col">
+                <FormLabel>Due Date</FormLabel>
+                <Popover modal={true}>
+                  <PopoverTrigger asChild>
+                    <FormControl>
+                      <Button
+                        variant={"outline"}
+                        className={cn(
+                          "w-full pl-3 text-left font-normal",
+                          !field.value && "text-muted-foreground"
+                        )}
+                      >
+                        {field.value ? (
+                          format(field.value as Date, "PPP")
+                        ) : (
+                          <span>Pick a date</span>
+                        )}
+                        <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
+                      </Button>
+                    </FormControl>
+                  </PopoverTrigger>
+                  <PopoverContent className="w-auto p-0" align="center">
+                    <Calendar
+                      mode="single"
+                      selected={new Date(field.value)}
+                      onSelect={field.onChange}
+                      disabled={(date: Date) => {
+                        const today = new Date();
+                        today.setHours(0, 0, 0, 0);
+                        const yesterday = new Date(today);
+                        yesterday.setDate(today.getDate() - 1);
+
+                        return date < today || date.getTime() === yesterday.getTime();
+                      }}
+                      captionLayout="dropdown"
+                    />
+                  </PopoverContent>
+                </Popover>
+                <FormMessage />
+              </FormItem>)}
           />
           <FormField
             control={form.control}
@@ -149,7 +197,7 @@ const TaskForm = () => {
                     defaultValue={field.value}
                   >
                     <SelectTrigger className="w-full">
-                      <SelectValue placeholder="Status" />
+                      <SelectValue placeholder="Select a status..." />
                     </SelectTrigger>
                     <SelectContent>
                       <SelectItem value="Pending">Pending</SelectItem>

@@ -31,9 +31,7 @@ const formSchema = z.object({
     .string()
     .min(2, { message: "Product name must be greater than 2 characters!" })
     .max(50),
-  quantity: z
-    .int()
-    .min(0, { message: "Quantity cannot be negative!" }),
+  quantity: z.int().min(0, { message: "Quantity cannot be negative!" }),
   location: z
     .string()
     .min(2, { message: "Location must be greater than 2 characters!" })
@@ -41,15 +39,17 @@ const formSchema = z.object({
   status: z.enum(["In Stock", "Low Stock", "Out of Stock"]),
   category: z.enum(["Product", "Raw Material"]),
 });
-
-const InventoryForm = () => {
+const OrderForm = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
+      product_name: "",
+      quantity: 0,
+      location: "",
       status: "Out of Stock",
-    }
+      category: "Product",
+    },
   });
-
   return (
     <div>
       <SheetHeader>
@@ -65,7 +65,7 @@ const InventoryForm = () => {
               <FormItem>
                 <FormLabel>Product Name</FormLabel>
                 <FormControl>
-                  <Input {...field} placeholder="Enter a product name..." autoComplete="off" />
+                  <Input {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -78,15 +78,7 @@ const InventoryForm = () => {
               <FormItem>
                 <FormLabel>Quantity</FormLabel>
                 <FormControl>
-                  <Input {...field}
-                    placeholder="Entry the quantity..."
-                    type="number"
-                    inputMode="numeric"
-                    min={0}
-                    onChange={(e) => field.onChange(e.currentTarget.valueAsNumber)}
-                    autoComplete="off"
-                    className="[appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
-                  />
+                  <Input {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -99,7 +91,7 @@ const InventoryForm = () => {
               <FormItem>
                 <FormLabel>Location</FormLabel>
                 <FormControl>
-                  <Input {...field} placeholder="Enter the location..." />
+                  <Input {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -115,9 +107,10 @@ const InventoryForm = () => {
                   <Select
                     value={field.value}
                     onValueChange={field.onChange}
+                    defaultValue={field.value}
                   >
                     <SelectTrigger className="w-full">
-                      <SelectValue placeholder="Select a status..." />
+                      <SelectValue placeholder="Status" />
                     </SelectTrigger>
                     <SelectContent>
                       <SelectItem value="In Stock">In Stock</SelectItem>
@@ -143,7 +136,7 @@ const InventoryForm = () => {
                     defaultValue={field.value}
                   >
                     <SelectTrigger className="w-full">
-                      <SelectValue placeholder="Select a category..." />
+                      <SelectValue placeholder="Category" />
                     </SelectTrigger>
                     <SelectContent>
                       <SelectItem value="Product">Product</SelectItem>
@@ -167,4 +160,4 @@ const InventoryForm = () => {
   );
 };
 
-export default InventoryForm;
+export default OrderForm;
