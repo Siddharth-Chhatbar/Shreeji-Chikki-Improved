@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { format } from "date-fns"
+import { format } from "date-fns";
 import * as z from "zod/v4";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
@@ -19,7 +19,11 @@ import {
   SheetTitle,
 } from "@/components/ui/sheet";
 import { Button } from "../ui/button";
-import { Popover, PopoverContent, PopoverTrigger } from "@radix-ui/react-popover";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@radix-ui/react-popover";
 import { cn } from "@/lib/utils";
 import { CalendarIcon } from "lucide-react";
 import { Calendar } from "../ui/calendar";
@@ -30,15 +34,13 @@ const formSchema = z.object({
     .trim()
     .min(2, { message: "Name must be greater than 2 characters" })
     .max(100, { message: "Name must be at most 100 characters" }),
-  hire_date: z.iso.date(),
+  hire_date: z.date(),
   job_title: z
     .string()
     .trim()
-    .min(2, { message: "Shop name must be greater than 2 characters" })
-    .max(100, { message: "Shop name must be at most 100 characters" }),
-  salary_per_hr: z
-    .number()
-    .min(0, { message: "Salary cannot be negative!" }),
+    .min(2, { message: "Job title must be greater than 2 characters" })
+    .max(100, { message: "Job title must be at most 100 characters" }),
+  salary_per_hr: z.number().min(0, { message: "Salary cannot be negative!" }),
 });
 
 const EmployeeForm = () => {
@@ -46,18 +48,24 @@ const EmployeeForm = () => {
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: "",
-      hire_date: new Date(),
       job_title: "",
     },
   });
+
   return (
     <div>
       <SheetHeader>
-        <SheetTitle>Customer</SheetTitle>
-        <SheetDescription>Add or Edit a Customer.</SheetDescription>
+        <SheetTitle>Employee</SheetTitle>
+        <SheetDescription>Add or Edit an Employee.</SheetDescription>
       </SheetHeader>
       <Form {...form}>
-        <form className="space-y-8 p-4">
+        <form
+          className="space-y-8 p-4"
+          onSubmit={form.handleSubmit((values) => {
+            values.salary_per_hr = Number(values.salary_per_hr);
+            console.log(typeof values.salary_per_hr);
+          })}
+        >
           <FormField
             control={form.control}
             name="name"
@@ -65,7 +73,7 @@ const EmployeeForm = () => {
               <FormItem>
                 <FormLabel>Name</FormLabel>
                 <FormControl>
-                  <Input {...field} placeholder="Enter customer name..." />
+                  <Input {...field} placeholder="Enter employee name..." />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -76,7 +84,7 @@ const EmployeeForm = () => {
             name="hire_date"
             render={({ field }) => (
               <FormItem className="flex flex-col">
-                <FormLabel>Date of birth</FormLabel>
+                <FormLabel>Hire Date</FormLabel>
                 <Popover>
                   <PopoverTrigger asChild>
                     <FormControl>
@@ -84,7 +92,7 @@ const EmployeeForm = () => {
                         variant={"outline"}
                         className={cn(
                           "w-full pl-3 text-left font-normal",
-                          !field.value && "text-muted-foreground"
+                          !field.value && "text-muted-foreground",
                         )}
                       >
                         {field.value ? (
@@ -109,14 +117,15 @@ const EmployeeForm = () => {
                   </PopoverContent>
                 </Popover>
                 <FormMessage />
-              </FormItem>)}
+              </FormItem>
+            )}
           />
           <FormField
             control={form.control}
             name="job_title"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Email</FormLabel>
+                <FormLabel>Job Title</FormLabel>
                 <FormControl>
                   <Input {...field} placeholder="Enter job title..." />
                 </FormControl>
@@ -124,15 +133,25 @@ const EmployeeForm = () => {
               </FormItem>
             )}
           />
-
           <FormField
             control={form.control}
             name="salary_per_hr"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Address</FormLabel>
+                <FormLabel>Salary Per Hour</FormLabel>
                 <FormControl>
-                  <Input {...field} placeholder="Enter salary per hr..." />
+                  <Input
+                    {...field}
+                    placeholder="Enter salary per hr..."
+                    type="number"
+                    inputMode="numeric"
+                    min={0}
+                    onChange={(e) =>
+                      field.onChange(e.currentTarget.valueAsNumber)
+                    }
+                    autoComplete="off"
+                    className="[appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>

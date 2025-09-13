@@ -1,5 +1,6 @@
 import { useForm } from "react-hook-form";
 import * as z from "zod/v4";
+import { format } from "date-fns"
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
   Form,
@@ -26,6 +27,10 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Textarea } from "../ui/textarea";
+import { Popover, PopoverContent, PopoverTrigger } from "@radix-ui/react-popover";
+import { cn } from "@/lib/utils";
+import { CalendarIcon } from "lucide-react";
+import { Calendar } from "../ui/calendar";
 
 const formSchema = z.object({
   task_name: z
@@ -133,6 +138,52 @@ const TaskForm = () => {
               </FormItem>
             )}
           />
+          <FormField
+            control={form.control}
+            name="due_date"
+            render={({ field }) => (
+              <FormItem className="flex flex-col">
+                <FormLabel>Due Date</FormLabel>
+                <Popover>
+                  <PopoverTrigger asChild>
+                    <FormControl>
+                      <Button
+                        variant={"outline"}
+                        className={cn(
+                          "w-full pl-3 text-left font-normal",
+                          !field.value && "text-muted-foreground"
+                        )}
+                      >
+                        {field.value ? (
+                          format(field.value, "PPP")
+                        ) : (
+                          <span>Pick a date</span>
+                        )}
+                        <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
+                      </Button>
+                    </FormControl>
+                  </PopoverTrigger>
+                  <PopoverContent className="w-auto p-0" align="center">
+                    <Calendar
+                      mode="single"
+                      selected={new Date(field.value)}
+                      onSelect={field.onChange}
+                      disabled={(date: Date) =>{
+                        const today = new Date();
+                        today.setHours(0, 0, 0, 0);
+                        const yesterday = new Date(today);
+                        yesterday.setDate(today.getDate() - 1);
+
+                        return date < today || date.getTime() === yesterday.getTime();
+                      }}
+                      captionLayout="dropdown"
+                    />
+                  </PopoverContent>
+                </Popover>
+                <FormMessage />
+              </FormItem>)}
+          />
+
           <FormField
             control={form.control}
             name="status"

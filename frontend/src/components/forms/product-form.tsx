@@ -72,7 +72,7 @@ const ProductForm = () => {
                     type="number"
                     inputMode="numeric"
                     min={0}
-                    onChange={(e) => field.onChange(e.currentTarget.value)}
+                    onChange={(e) => field.onChange(e.currentTarget.valueAsNumber)}
                     autoComplete="off"
                     className="[appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
                   />
@@ -92,7 +92,7 @@ const ProductForm = () => {
                     type="number"
                     inputMode="numeric"
                     min={0}
-                    onChange={(e) => field.onChange(e.currentTarget.value)}
+                    onChange={(e) => field.onChange(e.currentTarget.valueAsNumber)}
                     autoComplete="off"
                     className="[appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
                   />
@@ -112,7 +112,7 @@ const ProductForm = () => {
                     type="number"
                     inputMode="numeric"
                     min={0}
-                    onChange={(e) => field.onChange(e.currentTarget.value)}
+                    onChange={(e) => field.onChange(e.currentTarget.valueAsNumber)}
                     autoComplete="off"
                     className="[appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
                   />

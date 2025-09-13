@@ -25,3 +25,6 @@
 
  -- Employees 
  [] infer on holiday from timeentries for employees
+
+ -- Errors or fixes 
+ [] controlled and uncontrolled inputs for number inputs
