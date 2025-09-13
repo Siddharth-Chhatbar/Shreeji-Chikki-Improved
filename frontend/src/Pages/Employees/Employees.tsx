@@ -13,7 +13,7 @@ const Employees = () => {
           <TabsList>
             <TabsTrigger value="all"> All </TabsTrigger>
             {/* Infer this from time entries*/}
-            <TabsTrigger value="active"> On Holiday </TabsTrigger>
+            <TabsTrigger value="on-holiday"> On Holiday </TabsTrigger>
           </TabsList>
         </div>
         <div>
@@ -23,7 +23,7 @@ const Employees = () => {
       <TabsContent value="all" className="pb-4">
         <DataTable columns={columns} data={mockEmployeesData} />
       </TabsContent>
-      <TabsContent value="active" className="pb-4">
+      <TabsContent value="on-holiday" className="pb-4">
         <DataTable
           columns={columns}
           data={mockEmployeesData}

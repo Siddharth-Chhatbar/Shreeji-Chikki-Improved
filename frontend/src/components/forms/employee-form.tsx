@@ -45,8 +45,8 @@ const EmployeeForm = () => {
     defaultValues: {
       name: "",
       job_title: "",
-      hire_date: undefined,
-      salary_per_hr: undefined
+      hire_date: new Date(),
+      salary_per_hr: 0
     },
   });
 
