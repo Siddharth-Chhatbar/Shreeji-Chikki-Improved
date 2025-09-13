@@ -19,11 +19,7 @@ import {
   SheetTitle,
 } from "@/components/ui/sheet";
 import { Button } from "../ui/button";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@radix-ui/react-popover";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { cn } from "@/lib/utils";
 import { CalendarIcon } from "lucide-react";
 import { Calendar } from "../ui/calendar";
@@ -49,6 +45,8 @@ const EmployeeForm = () => {
     defaultValues: {
       name: "",
       job_title: "",
+      hire_date: undefined,
+      salary_per_hr: undefined
     },
   });
 
@@ -59,13 +57,7 @@ const EmployeeForm = () => {
         <SheetDescription>Add or Edit an Employee.</SheetDescription>
       </SheetHeader>
       <Form {...form}>
-        <form
-          className="space-y-8 p-4"
-          onSubmit={form.handleSubmit((values) => {
-            values.salary_per_hr = Number(values.salary_per_hr);
-            console.log(typeof values.salary_per_hr);
-          })}
-        >
+        <form className="space-y-8 p-4">
           <FormField
             control={form.control}
             name="name"
@@ -85,14 +77,14 @@ const EmployeeForm = () => {
             render={({ field }) => (
               <FormItem className="flex flex-col">
                 <FormLabel>Hire Date</FormLabel>
-                <Popover>
+                <Popover modal={true}>
                   <PopoverTrigger asChild>
                     <FormControl>
                       <Button
                         variant={"outline"}
                         className={cn(
                           "w-full pl-3 text-left font-normal",
-                          !field.value && "text-muted-foreground",
+                          !field.value && "text-muted-foreground"
                         )}
                       >
                         {field.value ? (
@@ -109,7 +101,7 @@ const EmployeeForm = () => {
                       mode="single"
                       selected={field.value}
                       onSelect={field.onChange}
-                      disabled={(date: Date) =>
+                      disabled={(date) =>
                         date > new Date() || date < new Date("1900-01-01")
                       }
                       captionLayout="dropdown"
