@@ -42,12 +42,11 @@ export type Supplier = {
   has_active_order: boolean;
 };
 
-
 export type Product = {
   id: number;
   name: string;
   price_per_unit_mrp: number;
-  price_per_unit_wholesale: number;
+  wholesale_price: number;
   weight_in_grams: number;
   created_at: string;
   updated_at: string;
@@ -74,5 +73,3 @@ export type Employee = {
   updated_at: string;
   user_id: number;
 };
-
-

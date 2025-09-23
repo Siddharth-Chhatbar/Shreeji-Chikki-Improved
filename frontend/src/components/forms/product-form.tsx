@@ -28,12 +28,8 @@ const formSchema = z.object({
   price_per_unit_mrp: z
     .number()
     .min(0, { message: "Price cannot be negetive" }),
-  price_per_unit_wholesale: z
-    .number()
-    .min(0, { message: "Price cannot be negetive" }),
-  weight_in_grams: z
-    .number()
-    .min(0, { message: "Weight cannot be negetive" }),
+  wholesale_price: z.number().min(0, { message: "Price cannot be negetive" }),
+  weight_in_grams: z.number().min(0, { message: "Weight cannot be negetive" }),
 });
 
 const ProductForm = () => {
@@ -68,11 +64,15 @@ const ProductForm = () => {
               <FormItem>
                 <FormLabel>Price Per Unit MRP</FormLabel>
                 <FormControl>
-                  <Input {...field} placeholder="Enter the price per unit in MRP..."
+                  <Input
+                    {...field}
+                    placeholder="Enter the price per unit in MRP..."
                     type="number"
                     inputMode="numeric"
                     min={0}
-                    onChange={(e) => field.onChange(e.currentTarget.valueAsNumber)}
+                    onChange={(e) =>
+                      field.onChange(e.currentTarget.valueAsNumber)
+                    }
                     autoComplete="off"
                     className="[appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
                   />
@@ -83,16 +83,20 @@ const ProductForm = () => {
           />
           <FormField
             control={form.control}
-            name="price_per_unit_wholesale"
+            name="wholesale_price"
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Price Per Unit Wholesale</FormLabel>
                 <FormControl>
-                  <Input {...field} placeholder="Enter the price per unit for Wholesale..."
+                  <Input
+                    {...field}
+                    placeholder="Enter the price per unit for Wholesale..."
                     type="number"
                     inputMode="numeric"
                     min={0}
-                    onChange={(e) => field.onChange(e.currentTarget.valueAsNumber)}
+                    onChange={(e) =>
+                      field.onChange(e.currentTarget.valueAsNumber)
+                    }
                     autoComplete="off"
                     className="[appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
                   />
@@ -108,11 +112,15 @@ const ProductForm = () => {
               <FormItem>
                 <FormLabel>Weight (grams)</FormLabel>
                 <FormControl>
-                  <Input {...field} placeholder="Enter the weight in grams..."
+                  <Input
+                    {...field}
+                    placeholder="Enter the weight in grams..."
                     type="number"
                     inputMode="numeric"
                     min={0}
-                    onChange={(e) => field.onChange(e.currentTarget.valueAsNumber)}
+                    onChange={(e) =>
+                      field.onChange(e.currentTarget.valueAsNumber)
+                    }
                     autoComplete="off"
                     className="[appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
                   />
@@ -134,4 +142,3 @@ const ProductForm = () => {
 };
 
 export default ProductForm;
-
