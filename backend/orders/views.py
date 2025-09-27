@@ -9,7 +9,7 @@ from rest_framework import viewsets
 
 
 class SalesOrderViewSet(viewsets.ModelViewSet):
-    queryset = SalesOrders.objects.all()
+    queryset = SalesOrders.objects.all().order_by("created_at")
     serializer_class = SalesOrderSerializer
     permission_classes = []
 
