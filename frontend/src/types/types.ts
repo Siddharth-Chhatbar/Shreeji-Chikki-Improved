@@ -73,3 +73,20 @@ export type Employee = {
   updated_at: string;
   user_id: number;
 };
+
+export type InputSheetType =
+  | "inventory"
+  | "task"
+  | "supplier"
+  | "product"
+  | "customer"
+  | "employee";
+
+export type InputSheetDataMap = {
+  inventory: InventoryItem | null;
+  task: null;
+  supplier: null;
+  product: null;
+  customer: null;
+  employee: null;
+};
