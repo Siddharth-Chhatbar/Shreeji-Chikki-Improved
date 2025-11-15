@@ -31,6 +31,8 @@ import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 import { cn } from "@/lib/utils";
 import { CalendarIcon } from "lucide-react";
 import { Calendar } from "../ui/calendar";
+import type { TasksItem } from "@/types/types";
+import { mockTasksData } from "@/mock_data/mock-tasks-data";
 
 const formSchema = z.object({
   task_name: z
@@ -46,15 +48,27 @@ const formSchema = z.object({
   due_date: z.date(),
   status: z.enum(["Pending", "Completed"]),
 });
-const TaskForm = () => {
+
+interface formProps {
+  data: TasksItem | null;
+}
+
+const TaskForm = ({ data = null }: formProps) => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       description: "",
       status: "Pending",
-      due_date: new Date()
+      due_date: new Date(),
     },
   });
+
+  const uniqueAssignedTo = Array.from(
+    new Set(mockTasksData.map((t) => t.assigned_to)),
+  );
+  const uniqueAssignedBy = Array.from(
+    new Set(mockTasksData.map((t) => t.assigned_by)),
+  );
   return (
     <div>
       <SheetHeader>
@@ -70,7 +84,11 @@ const TaskForm = () => {
               <FormItem>
                 <FormLabel>Task Name</FormLabel>
                 <FormControl>
-                  <Input {...field} placeholder="Enter a task name..." />
+                  <Input
+                    {...field}
+                    placeholder="Enter a task name..."
+                    value={data?.name}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -83,7 +101,11 @@ const TaskForm = () => {
               <FormItem>
                 <FormLabel>Description</FormLabel>
                 <FormControl>
-                  <Textarea {...field} placeholder="Enter a task description..." />
+                  <Textarea
+                    {...field}
+                    placeholder="Enter a task description..."
+                    value={data?.description}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -97,16 +119,18 @@ const TaskForm = () => {
                 <FormLabel>Assigned To</FormLabel>
                 <FormControl>
                   <Select
-                    value={field.value}
+                    value={data ? data.assigned_to : field.value}
                     onValueChange={field.onChange}
-                    defaultValue={field.value}
                   >
                     <SelectTrigger className="w-full">
                       <SelectValue placeholder="Choose assignee..." />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="A">A</SelectItem>
-                      <SelectItem value="B">B</SelectItem>
+                      {uniqueAssignedTo.map((mockData) => (
+                        <SelectItem key={mockData} value={mockData}>
+                          {mockData}
+                        </SelectItem>
+                      ))}
                     </SelectContent>
                   </Select>
                 </FormControl>
@@ -122,16 +146,18 @@ const TaskForm = () => {
                 <FormLabel>Assigned By</FormLabel>
                 <FormControl>
                   <Select
-                    value={field.value}
+                    value={data ? data.assigned_by : field.value}
                     onValueChange={field.onChange}
-                    defaultValue={field.value}
                   >
                     <SelectTrigger className="w-full">
                       <SelectValue placeholder="Assigned by..." />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="A">A</SelectItem>
-                      <SelectItem value="B">B</SelectItem>
+                      {uniqueAssignedBy.map((mockData) => (
+                        <SelectItem key={mockData} value={mockData}>
+                          {mockData}
+                        </SelectItem>
+                      ))}
                     </SelectContent>
                   </Select>
                 </FormControl>
@@ -152,7 +178,7 @@ const TaskForm = () => {
                         variant={"outline"}
                         className={cn(
                           "w-full pl-3 text-left font-normal",
-                          !field.value && "text-muted-foreground"
+                          !field.value && "text-muted-foreground",
                         )}
                       >
                         {field.value ? (
@@ -167,7 +193,9 @@ const TaskForm = () => {
                   <PopoverContent className="w-auto p-0" align="center">
                     <Calendar
                       mode="single"
-                      selected={new Date(field.value)}
+                      selected={
+                        data ? new Date(data.due_date) : new Date(field.value)
+                      }
                       onSelect={field.onChange}
                       disabled={(date: Date) => {
                         const today = new Date();
@@ -175,14 +203,17 @@ const TaskForm = () => {
                         const yesterday = new Date(today);
                         yesterday.setDate(today.getDate() - 1);
 
-                        return date < today || date.getTime() === yesterday.getTime();
+                        return (
+                          date < today || date.getTime() === yesterday.getTime()
+                        );
                       }}
                       captionLayout="dropdown"
                     />
                   </PopoverContent>
                 </Popover>
                 <FormMessage />
-              </FormItem>)}
+              </FormItem>
+            )}
           />
           <FormField
             control={form.control}
@@ -194,7 +225,7 @@ const TaskForm = () => {
                   <Select
                     value={field.value}
                     onValueChange={field.onChange}
-                    defaultValue={field.value}
+                    defaultValue={data ? data.status : field.value}
                   >
                     <SelectTrigger className="w-full">
                       <SelectValue placeholder="Select a status..." />

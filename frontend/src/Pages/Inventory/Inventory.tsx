@@ -44,6 +44,10 @@ const Inventory = () => {
           columns={columns}
           data={mockInventoryData}
           sheet="inventory"
+          onRowClick={(row) => {
+            setSheetData(row);
+            setOpen(true);
+          }}
         />
       </TabsContent>
     </Tabs>

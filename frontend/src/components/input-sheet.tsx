@@ -7,7 +7,12 @@ import ProductForm from "./forms/product-form";
 import CustomerForm from "./forms/customer-form";
 import EmployeeForm from "./forms/employee-form";
 
-import type { InputSheetDataMap, InputSheetType } from "@/types/types";
+import type {
+  InputSheetDataMap,
+  InputSheetType,
+  InventoryItem,
+  TasksItem,
+} from "@/types/types";
 import type { JSX } from "react";
 
 interface FormProps<T extends InputSheetType> {
@@ -24,8 +29,8 @@ export function InputSheet<T extends InputSheetType>({
   setOpen,
 }: FormProps<T>) {
   const form: Record<InputSheetType, JSX.Element> = {
-    inventory: <InventoryForm data={data} />,
-    task: <TaskForm />,
+    inventory: <InventoryForm data={data as InventoryItem} />,
+    task: <TaskForm data={data as TasksItem} />,
     supplier: <SupplierForm />,
     product: <ProductForm />,
     customer: <CustomerForm />,
@@ -35,7 +40,7 @@ export function InputSheet<T extends InputSheetType>({
   return (
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild>
-        <Button>
+        <Button onClick={() => (data = null)}>
           <span className="capitalize">Add {sheet}</span>
         </Button>
       </SheetTrigger>

@@ -84,9 +84,9 @@ export type InputSheetType =
 
 export type InputSheetDataMap = {
   inventory: InventoryItem | null;
-  task: null;
-  supplier: null;
-  product: null;
-  customer: null;
-  employee: null;
+  task: TasksItem | null;
+  supplier: Supplier | null;
+  product: Product | null;
+  customer: Customer | null;
+  employee: Employee | null;
 };
