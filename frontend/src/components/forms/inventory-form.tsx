@@ -25,15 +25,14 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import type { InventoryItem } from "@/types/types";
 
 const formSchema = z.object({
   product_name: z
     .string()
     .min(2, { message: "Product name must be greater than 2 characters!" })
     .max(50),
-  quantity: z
-    .int()
-    .min(0, { message: "Quantity cannot be negative!" }),
+  quantity: z.int().min(0, { message: "Quantity cannot be negative!" }),
   location: z
     .string()
     .min(2, { message: "Location must be greater than 2 characters!" })
@@ -42,12 +41,16 @@ const formSchema = z.object({
   category: z.enum(["Product", "Raw Material"]),
 });
 
-const InventoryForm = () => {
+interface formProps {
+  data: InventoryItem | null;
+}
+
+function InventoryForm({ data = null }: formProps) {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       status: "Out of Stock",
-    }
+    },
   });
 
   return (
@@ -65,7 +68,12 @@ const InventoryForm = () => {
               <FormItem>
                 <FormLabel>Product Name</FormLabel>
                 <FormControl>
-                  <Input {...field} placeholder="Enter a product name..." autoComplete="off" />
+                  <Input
+                    {...field}
+                    placeholder="Enter a product name..."
+                    autoComplete="off"
+                    value={data?.name}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -78,14 +86,18 @@ const InventoryForm = () => {
               <FormItem>
                 <FormLabel>Quantity</FormLabel>
                 <FormControl>
-                  <Input {...field}
+                  <Input
+                    {...field}
                     placeholder="Entry the quantity..."
                     type="number"
                     inputMode="numeric"
                     min={0}
-                    onChange={(e) => field.onChange(e.currentTarget.valueAsNumber)}
+                    onChange={(e) =>
+                      field.onChange(e.currentTarget.valueAsNumber)
+                    }
                     autoComplete="off"
                     className="[appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                    value={data?.quantity}
                   />
                 </FormControl>
                 <FormMessage />
@@ -99,7 +111,11 @@ const InventoryForm = () => {
               <FormItem>
                 <FormLabel>Location</FormLabel>
                 <FormControl>
-                  <Input {...field} placeholder="Enter the location..." />
+                  <Input
+                    {...field}
+                    placeholder="Enter the location..."
+                    value={data?.location}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -112,12 +128,12 @@ const InventoryForm = () => {
               <FormItem>
                 <FormLabel>Status</FormLabel>
                 <FormControl>
-                  <Select
-                    value={field.value}
-                    onValueChange={field.onChange}
-                  >
+                  <Select value={field.value} onValueChange={field.onChange}>
                     <SelectTrigger className="w-full">
-                      <SelectValue placeholder="Select a status..." />
+                      <SelectValue
+                        placeholder="Select a status..."
+                        defaultValue={data?.status}
+                      />
                     </SelectTrigger>
                     <SelectContent>
                       <SelectItem value="In Stock">In Stock</SelectItem>
@@ -165,6 +181,6 @@ const InventoryForm = () => {
       </Form>
     </div>
   );
-};
+}
 
 export default InventoryForm;

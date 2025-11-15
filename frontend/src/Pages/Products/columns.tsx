@@ -17,16 +17,16 @@ export const columns: ColumnDef<Product>[] = [
     header: "Name",
   },
   {
+    accessorKey: "weight_in_grams",
+    header: "Weight",
+  },
+  {
     accessorKey: "price_per_unit_mrp",
     header: "Price Per Unit MRP",
   },
   {
-    accessorKey: "price_per_unit_wholesale",
-    header: "Price Per Unit Wholesale",
-  },
-  {
-    accessorKey: "weight_in_grams",
-    header: "Weight",
+    accessorKey: "wholesale_price",
+    header: "Wholesale Price",
   },
   {
     // Maybe ask about this and just allow actions only on the supplier page

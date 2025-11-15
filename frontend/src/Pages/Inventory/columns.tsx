@@ -25,7 +25,7 @@ export const columns: ColumnDef<InventoryItem>[] = [
             variant="ghost"
             onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
           >
-            Quantity
+            Quantity (Cartons)
             <ArrowUpDown className="ml-2 h-4 w-4" />
           </Button>
         </div>
@@ -65,7 +65,7 @@ export const columns: ColumnDef<InventoryItem>[] = [
               Copy payment ID
             </DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>View customer</DropdownMenuItem>
+            <DropdownMenuItem>View Item</DropdownMenuItem>
             <DropdownMenuItem>View payment details</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

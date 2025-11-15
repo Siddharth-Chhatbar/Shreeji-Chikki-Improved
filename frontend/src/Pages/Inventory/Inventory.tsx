@@ -3,44 +3,13 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { columns } from "./columns";
 import mockInventoryData from "@/mock_data/mock-inventory-data";
 import { InputSheet } from "@/components/input-sheet";
-// import type { InventoryFormField } from "@/types/types";
+import { useState } from "react";
+import type { InventoryItem } from "@/types/types";
 
-// async function getData(): Promise<Payment[]> {
-//   // Fetch data from your API here.
-//   return [
-//     {
-//       id: "728ed52f",
-//       amount: 100,
-//       status: "pending",
-//       email: "m@example.com",
-//     },
-//     // ...
-//   ]
-// }
-
-// const newInventoryItemFormFields: InventoryFormField[] = [
-//   {
-//     label: "Supplier Name",
-//     placeholder: "Enter Supplier Name...",
-//   },
-//   {
-//     label: "Product",
-//     placeholder: "Enter Product/Select Product", // Able to select product from a dropdown
-//   },
-//   {
-//     label: "Amount",
-//     placeholder: "Enter Amount...",
-//   },
-//   {
-//     label: "Delivery Date",
-//     placeholder: "Select Delivery Date...",
-//   },
-//   {
-//     label: "Comments",
-//     placeholder: "",
-//   },
-// ];
 const Inventory = () => {
+  const [open, setOpen] = useState(false);
+  const [sheetData, setSheetData] = useState<InventoryItem | null>(null);
+
   return (
     <Tabs defaultValue="products">
       <div className="flex flex-row justify-between">
@@ -51,14 +20,35 @@ const Inventory = () => {
           </TabsList>
         </div>
         <div>
-          <InputSheet sheet="inventory" />
+          <InputSheet
+            open={open}
+            setOpen={setOpen}
+            sheet="inventory"
+            data={sheetData}
+          />
         </div>
       </div>
       <TabsContent value="products" className="pb-4">
-        <DataTable columns={columns} data={mockInventoryData} />
+        <DataTable
+          columns={columns}
+          data={mockInventoryData}
+          sheet="inventory"
+          onRowClick={(row) => {
+            setSheetData(row);
+            setOpen(true);
+          }}
+        />
       </TabsContent>
       <TabsContent value="raw_materials" className="pb-4">
-        <DataTable columns={columns} data={mockInventoryData} />
+        <DataTable
+          columns={columns}
+          data={mockInventoryData}
+          sheet="inventory"
+          onRowClick={(row) => {
+            setSheetData(row);
+            setOpen(true);
+          }}
+        />
       </TabsContent>
     </Tabs>
   );
